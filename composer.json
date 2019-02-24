@@ -1,0 +1,26 @@
+{
+  "name": "jida/app",
+  "description": "Configuracion de aplicación web para Jida Framework",
+  "type": "project",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "rrodriguez",
+      "email": "rrodriguez@jidadesarrollos.com"
+    },
+    {
+      "name": "jrodriguez",
+      "email": "jrodriguez@jidadesarrollos.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": [
+        "./Aplicacion/"
+      ],
+      "Jida\\": [
+        "./jida"
+      ]
+    }
+  }
+}

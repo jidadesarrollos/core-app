@@ -1,0 +1,29 @@
+{
+  "link": {
+    "shortcut icon": "/htdocs/img/favicon/favicon.png"
+  },
+  "layout": "default",
+  "layoutError": "error",
+  "dev": {
+    "css": {
+      "default": {
+        "bt": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
+        "principal": "{tema}/htdocs/css/principal.css"
+      }
+    },
+    "js": {
+      "default": {
+        "bt": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+        "principal": "{tema}/htdocs/js/principal.js"
+      }
+    }
+  },
+  "prod": {
+    "css": {
+      "principal": "{tema}/htdocs/css/principal.bundle.css"
+    },
+    "js": {
+      "principal": "{tema}/htdocs/js/principal.bundle.js"
+    }
+  }
+}

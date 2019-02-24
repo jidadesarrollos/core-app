@@ -1,0 +1,9 @@
+.idea
+node_modules
+bower_components
+/Aplicacion/Config/BD.php
+/Framework
+/vendor
+/error.log
+/composer.lock
+/jida
