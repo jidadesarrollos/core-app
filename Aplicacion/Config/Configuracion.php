@@ -14,13 +14,14 @@ class Configuracion extends Config {
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE      = 'soporte@jidadesarrollos.com';
 
-    public $tema = 'default';
-    public $idiomas = [
+    public $tema     = 'default';
+    public $idiomas  = [
         'es' => 'Español'
     ];
-    static $modulos = [
+    static $modulos  = [
+        'TestValidador'
     ];
-    public $logo = 'default/htdocs/img/logo.png';
+    public $logo     = 'default/htdocs/img/logo.png';
     public $mensajes = [
         'error' => 'alert alert-danger',
         'suceso' => 'alert alert-success',
