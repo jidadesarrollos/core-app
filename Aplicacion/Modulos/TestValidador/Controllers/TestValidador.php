@@ -23,12 +23,17 @@ class TestValidador extends App {
     }
 
     public function archivo() {
-        $valid = Validador::crear([
-                    'file' => $_FILES['file']
-                        ], [
-                    'file' => 'archivo'
+
+        $valid = Validador::crear(array_merge($_POST, $_FILES), [
+                    'file' => 'archivo|mime_type:image/jpeg,image/jpg,image/png',
+                    'email' => 'mail|string:lower'
         ]);
-        $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid['file']]);
+        if ($valid->valido()) {
+            $name = 'file.' . $valid['file']->getExtension();
+            $valid['file']->copy($name);
+        }
+
+        $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid]);
     }
 
 }
