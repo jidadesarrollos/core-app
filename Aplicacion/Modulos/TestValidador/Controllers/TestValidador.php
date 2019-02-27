@@ -18,12 +18,10 @@ class TestValidador extends App {
                         ], [
                     'email' => 'mail'
         ]);
-
         $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid]);
     }
 
     public function archivo() {
-
         $valid = Validador::crear(array_merge($_POST, $_FILES), [
                     'file' => 'archivo|mime_type:image/jpeg,image/jpg,image/png',
                     'email' => 'mail|string:lower'
@@ -32,7 +30,6 @@ class TestValidador extends App {
             $name = 'file.' . $valid['file']->getExtension();
             $valid['file']->copy($name);
         }
-
         $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid]);
     }
 
