@@ -19,6 +19,7 @@ class Configuracion extends Config {
         'es' => 'Español'
     ];
     static $modulos = [
+        'TestGestor'
     ];
     public $logo = 'default/htdocs/img/logo.png';
     public $mensajes = [
