@@ -15,9 +15,13 @@ class TestValidador extends App {
     public function index() {
         
         $valid = Validador::crear(
-                ['email1' => 'e@maill.com','email2'=>'e@maill.com,ef@maill.com'], 
-                ['email1' => 'mail','email1' => 'mail']);
-        $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid]);
+                ['email1' => 'e@maill.com','email2'=>'e@maill.com,ef@maill.com','fec'=>'2017-03-20 20:30:30'], 
+                ['email1' => 'mail','email2' => 'mail:multiple','fec'=>'fecha:Y-m-d H:i:s']);
+      /*  if(preg_match("/^([\w]+)(:(.*))?/", "234ever_ws212:asd,asd,wq",$m))
+            {
+                
+            }*/
+        $this->data(['mensaje' => 'Controlador ' . self::class, 'datos' => $valid['fec']]);
     }
 
     public function archivo() {
