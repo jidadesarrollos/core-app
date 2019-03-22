@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2018 a las 22:46:36
--- Versión del servidor: 10.1.25-MariaDB
--- Versión de PHP: 5.6.31
+-- Tiempo de generación: 26-02-2019 a las 21:35:16
+-- Versión del servidor: 10.1.10-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `jidaapp`
+-- Base de datos: `app`
 --
 
 -- --------------------------------------------------------
@@ -408,14 +408,9 @@ INSERT INTO `s_opciones_menu` (`id_opcion_menu`, `opcion_menu`, `url_opcion`, `i
 (1, 'Formularios', '/jadmin/forms/', NULL, 0, 1, 'fa fa-check', 2, 1, 1, 1, NULL, NULL, NULL, '2014-02-13 13:01:11', '2014-08-08 10:56:35', NULL, NULL),
 (2, 'Menus', '/jadmin/menus/', NULL, 0, 0, 'fa fa-bars', 3, 1, 1, 1, NULL, NULL, NULL, '2014-02-13 13:01:11', NULL, NULL, NULL),
 (3, 'ACL', NULL, NULL, 0, 1, 'fa fa-dashboard', 1, 1, 1, 1, NULL, NULL, NULL, '2014-02-13 13:01:11', NULL, NULL, NULL),
-(4, 'Objetos', '/jadmin/objetos/', NULL, 3, 0, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, '2014-02-13 13:01:11', NULL, NULL, NULL),
-(5, 'Componentes', '/jadmin/componentes/', NULL, 3, 0, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, '2014-02-13 13:01:11', NULL, NULL, NULL),
 (9, 'Perfiles', '/jadmin/perfiles/', NULL, 3, 0, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (10, 'Cerrar Sesión', '/jadmin/users/cierresesion/', NULL, 0, 0, 'fa fa-power-off', 10, 1, 1, 1, NULL, NULL, NULL, NULL, '2014-09-02 22:30:26', NULL, NULL),
-(11, 'Usuarios', '/jadmin/users/', NULL, 3, 0, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'Jida', '/jadmin/forms/jida-forms', NULL, 1, 0, NULL, NULL, 1, 1, 1, NULL, NULL, NULL, '2014-08-04 05:31:21', '2014-08-08 10:37:52', NULL, NULL),
-(28, 'Aplicaci&oacute;n', '/jadmin/forms/filter/aplicacion', NULL, 1, 0, 'fa-plus-square-o', 2, 1, 1, 1, NULL, NULL, NULL, '2014-08-04 05:54:06', '2014-08-04 05:54:06', NULL, NULL),
-(29, '1', '/algo-distinto/', NULL, 1, 0, NULL, 10, 1, 1, 1, NULL, NULL, NULL, '2014-08-08 10:57:10', '2014-08-08 10:57:10', NULL, NULL);
+(11, 'Usuarios', '/jadmin/users/', NULL, 3, 0, NULL, NULL, 1, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -441,14 +436,9 @@ INSERT INTO `s_opciones_menu_perfiles` (`id_opcion_menu_perfil`, `id_opcion_menu
 (1, 1, 1, NULL, NULL, NULL, NULL),
 (2, 2, 1, NULL, NULL, NULL, NULL),
 (3, 3, 1, NULL, NULL, NULL, NULL),
-(4, 4, 1, NULL, NULL, NULL, NULL),
-(5, 5, 1, NULL, NULL, NULL, NULL),
 (6, 9, 1, NULL, NULL, NULL, NULL),
 (7, 10, 1, NULL, NULL, NULL, NULL),
 (8, 11, 1, NULL, NULL, NULL, NULL),
-(9, 27, 1, NULL, NULL, NULL, NULL),
-(10, 28, 1, NULL, NULL, NULL, NULL),
-(11, 29, 1, NULL, NULL, NULL, NULL),
 (12, 1, 1, NULL, NULL, NULL, NULL),
 (13, 2, 1, NULL, NULL, NULL, NULL),
 (14, 10, 1, NULL, NULL, NULL, NULL),
@@ -464,7 +454,6 @@ CREATE TABLE `s_perfiles` (
   `id_perfil` int(11) NOT NULL,
   `perfil` varchar(50) DEFAULT NULL,
   `fecha_creado` datetime DEFAULT NULL,
-  `clave_perfil` varchar(100) NOT NULL,
   `identificador` varchar(60) DEFAULT NULL,
   `id_idioma` varchar(5) DEFAULT NULL,
   `texto_original` int(11) DEFAULT NULL,
@@ -478,10 +467,10 @@ CREATE TABLE `s_perfiles` (
 -- Volcado de datos para la tabla `s_perfiles`
 --
 
-INSERT INTO `s_perfiles` (`id_perfil`, `perfil`, `fecha_creado`, `clave_perfil`, `identificador`, `id_idioma`, `texto_original`, `id_usuario_creador`, `id_usuario_modificador`, `fecha_creacion`, `fecha_modificacion`) VALUES
-(1, 'Jida Administrador', '2014-02-13 13:01:11', 'JidaAdministrador', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Administrador', '2014-02-13 13:01:11', 'Administrador', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(3, 'Usuario Publico', '2014-02-13 13:01:11', 'UsuarioPublico', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `s_perfiles` (`id_perfil`, `perfil`, `fecha_creado`, `identificador`, `id_idioma`, `texto_original`, `id_usuario_creador`, `id_usuario_modificador`, `fecha_creacion`, `fecha_modificacion`) VALUES
+(1, 'Jida Administrador', '2014-02-13 13:01:11', 'jadmin', NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Administrador', '2014-02-13 13:01:11', 'admin', NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Usuario Publico', '2014-02-13 13:01:11', 'publico', NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -522,12 +511,12 @@ CREATE TABLE `s_posts` (
 
 CREATE TABLE `s_usuarios` (
   `id_usuario` int(11) NOT NULL,
-  `nombre_usuario` varchar(100) NOT NULL,
-  `clave_usuario` varchar(50) NOT NULL,
+  `usuario` varchar(100) NOT NULL,
+  `clave` varchar(100) NOT NULL,
   `identificador` varchar(100) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL,
   `id_estatus` int(11) NOT NULL,
-  `ultima_session` datetime DEFAULT NULL,
+  `ultima_sesion` datetime DEFAULT NULL,
   `validacion` varchar(500) DEFAULT NULL,
   `nombres` varchar(100) DEFAULT NULL,
   `apellidos` varchar(100) DEFAULT NULL,
@@ -545,8 +534,8 @@ CREATE TABLE `s_usuarios` (
 -- Volcado de datos para la tabla `s_usuarios`
 --
 
-INSERT INTO `s_usuarios` (`id_usuario`, `nombre_usuario`, `clave_usuario`, `identificador`, `activo`, `id_estatus`, `ultima_session`, `validacion`, `nombres`, `apellidos`, `correo`, `codigo_recuperacion`, `sexo`, `img_perfil`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creador`, `id_usuario_modificador`) VALUES
-(1, 'jadmin', '3711be79067177199efb2589054a6894', NULL, 1, 1, '2017-02-26 09:22:50', '1', NULL, NULL, NULL, NULL, NULL, NULL, '2014-02-13 13:01:12', NULL, NULL, NULL),
+INSERT INTO `s_usuarios` (`id_usuario`, `usuario`, `clave`, `identificador`, `activo`, `id_estatus`, `ultima_sesion`, `validacion`, `nombres`, `apellidos`, `correo`, `codigo_recuperacion`, `sexo`, `img_perfil`, `fecha_creacion`, `fecha_modificacion`, `id_usuario_creador`, `id_usuario_modificador`) VALUES
+(1, 'jadmin', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, 1, '2017-02-26 09:22:50', '1', NULL, NULL, NULL, NULL, NULL, NULL, '2014-02-13 13:01:12', NULL, NULL, NULL),
 (2, 'jeanpierre', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, 1, NULL, '1', NULL, NULL, 'jeacontreras2009@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (3, 'felix', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, 1, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 'dayan', 'e10adc3949ba59abbe56e057f20f883e', NULL, 1, 1, NULL, '1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
@@ -765,96 +754,115 @@ ALTER TABLE `s_usuarios_perfiles`
 --
 ALTER TABLE `s_clasificaciones`
   MODIFY `id_clasificacion` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_comentarios_posts`
 --
 ALTER TABLE `s_comentarios_posts`
   MODIFY `id_comentario_post` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_componentes`
 --
 ALTER TABLE `s_componentes`
   MODIFY `id_componente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `s_componentes_perfiles`
 --
 ALTER TABLE `s_componentes_perfiles`
   MODIFY `id_componente_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
 --
 -- AUTO_INCREMENT de la tabla `s_elementos`
 --
 ALTER TABLE `s_elementos`
   MODIFY `id_elemento` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_estatus`
 --
 ALTER TABLE `s_estatus`
   MODIFY `id_estatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `s_estatus_posts`
 --
 ALTER TABLE `s_estatus_posts`
   MODIFY `id_estatus_post` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_menus`
 --
 ALTER TABLE `s_menus`
   MODIFY `id_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `s_metodos`
 --
 ALTER TABLE `s_metodos`
   MODIFY `id_metodo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
 --
 -- AUTO_INCREMENT de la tabla `s_metodos_perfiles`
 --
 ALTER TABLE `s_metodos_perfiles`
   MODIFY `id_metodo_perfil` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_objetos`
 --
 ALTER TABLE `s_objetos`
   MODIFY `id_objeto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
 --
 -- AUTO_INCREMENT de la tabla `s_objetos_media`
 --
 ALTER TABLE `s_objetos_media`
   MODIFY `id_objeto_media` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_objetos_perfiles`
 --
 ALTER TABLE `s_objetos_perfiles`
   MODIFY `id_objeto_perfil` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_opciones_menu`
 --
 ALTER TABLE `s_opciones_menu`
-  MODIFY `id_opcion_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_opcion_menu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
 --
 -- AUTO_INCREMENT de la tabla `s_opciones_menu_perfiles`
 --
 ALTER TABLE `s_opciones_menu_perfiles`
   MODIFY `id_opcion_menu_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
 --
 -- AUTO_INCREMENT de la tabla `s_perfiles`
 --
 ALTER TABLE `s_perfiles`
   MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `s_posts`
 --
 ALTER TABLE `s_posts`
   MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `s_usuarios`
 --
 ALTER TABLE `s_usuarios`
   MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `s_usuarios_perfiles`
 --
 ALTER TABLE `s_usuarios_perfiles`
   MODIFY `id_usuario_perfil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
 --
 -- Restricciones para tablas volcadas
 --
