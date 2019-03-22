@@ -512,7 +512,7 @@ CREATE TABLE `s_posts` (
 CREATE TABLE `s_usuarios` (
   `id_usuario` int(11) NOT NULL,
   `usuario` varchar(100) NOT NULL,
-  `clave` varchar(50) NOT NULL,
+  `clave` varchar(100) NOT NULL,
   `identificador` varchar(100) DEFAULT NULL,
   `activo` tinyint(1) DEFAULT NULL,
   `id_estatus` int(11) NOT NULL,
