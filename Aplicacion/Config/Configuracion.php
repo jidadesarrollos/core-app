@@ -20,6 +20,7 @@ class Configuracion extends Config {
     ];
 
     static $modulos = [
+        'prueba' => 'prueba'
     ];
 
     public $logo = 'default/htdocs/img/logo.png';

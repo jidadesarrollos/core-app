@@ -5,15 +5,15 @@
  */
 
 namespace App\Modulos\Prueba\Jadmin\Controllers;
-  
-use Jida\Jadmin\Controllers\JControl;
 
-class Prueba extends JControl{
-      
-    public function index (){
-    
-        $this->data(['mensaje' => 'Controlador '.self::class]);
+use Jadmin\Controllers\JControl;
+
+class Prueba extends JControl {
+
+    public function index() {
+
+        $this->data(['mensaje' => 'Controlador ' . self::class]);
 
     }
-    
+
 }

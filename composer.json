@@ -20,6 +20,12 @@
       ],
       "Jida\\": [
         "./jida"
+      ],
+      "Jadmin\\": [
+        "./Jadmin"
+      ],
+      "JidaRender": [
+        "./Render"
       ]
     }
   }
