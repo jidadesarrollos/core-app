@@ -51,11 +51,11 @@ class JControl extends Controlador {
         $urlBase = Estructura::$urlBase;
         $urlTema = Estructura::$urlJida . '/Jadmin/Layout/' . $config->tema . "/";
 
-//        $menu = new Menu('/jadmin/menu');
-//        $menu->addClass('navigation-left');
+        $menu = new Menu('menu', \Jadmin\Jadmin::$directorio);
+        $menu->addClass('navigation-left');
 
         $this->data([
-            // 'menu'      => $menu->render(),
+            'menu'      => $menu->render(),
             'nombreApp' => $nombreApp,
             'urlBase'   => $urlBase,
             'urlTema'   => $urlTema

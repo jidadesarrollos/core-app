@@ -4,7 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/jida" isTestSource="false" packagePrefix="Jida\" />
       <sourceFolder url="file://$MODULE_DIR$/Jadmin" isTestSource="false" packagePrefix="Jadmin\" />
-      <sourceFolder url="file://$MODULE_DIR$/Render" isTestSource="false" packagePrefix="JidaRender" />
+      <sourceFolder url="file://$MODULE_DIR$/Render" isTestSource="false" packagePrefix="JidaRender\" />
       <sourceFolder url="file://$MODULE_DIR$/Aplicacion" isTestSource="false" packagePrefix="App\" />
       <excludeFolder url="file://$MODULE_DIR$/basura" />
       <excludeFolder url="file://$MODULE_DIR$/trash" />

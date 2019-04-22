@@ -24,7 +24,7 @@
       "Jadmin\\": [
         "./Jadmin"
       ],
-      "JidaRender": [
+      "JidaRender\\": [
         "./Render"
       ]
     }

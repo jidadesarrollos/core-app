@@ -65,13 +65,11 @@ class Menu extends Selector {
      * Funcion constructora
      * @method __construct
      */
-    function __construct($menu = "") {
+    function __construct($menu = "", $path = false) {
 
         $this->_conf = Config::obtener();
 
-        if ($menu) {
-            $this->cargarMenu($menu);
-        }
+        if ($menu) $this->cargarMenu($menu, $path);
 
         parent::__construct($menu);
     }
@@ -88,14 +86,15 @@ class Menu extends Selector {
      * @method cargarMenu
      * @param string $menu Nombre del Menu
      */
-    private function cargarMenu($menu) {
+    private function cargarMenu($menu, $path) {
 
         try {
+
             if (!strrpos($menu, ".json")) {
                 $menu = $menu . ".json";
             }
 
-            $path = $this->_obtenerDirectorio($menu);
+            $path = $this->_obtenerDirectorio($menu, $path);
 
             if (!Medios\Directorios::validar($path)) {
                 $msj = "No se consigue el archivo de configuracion del menu $path";
@@ -112,7 +111,19 @@ class Menu extends Selector {
 
     }
 
-    private function _obtenerDirectorio($menu) {
+    private function _obtenerDirectorio($menu, $path) {
+
+        if ($path) {
+
+            $directorio = $path . DS . $menu;
+            if (Medios\Directorios::validar($directorio)) {
+                Excepcion::procesar("No existe el menu $menu", self::$_ce . 1);
+            }
+
+
+            return $path . DS . $menu;
+
+        }
 
         $menu = strtolower($menu);
         $partes = array_filter(explode("/", $menu));
