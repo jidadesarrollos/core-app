@@ -23,6 +23,11 @@
     "descripcion": {
       "label": "Descripcion",
       "name": "descripcion",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Debe ingresar el nombre del proyecto"
+        }
+      },
       "orden": "2",
       "placeholder": "Descripcion",
       "visibilidad": "1",
