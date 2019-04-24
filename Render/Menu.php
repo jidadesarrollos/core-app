@@ -116,7 +116,7 @@ class Menu extends Selector {
         if ($path) {
 
             $directorio = $path . DS . $menu;
-            if (Medios\Directorios::validar($directorio)) {
+            if (!Medios\Directorios::validar($directorio)) {
                 Excepcion::procesar("No existe el menu $menu", self::$_ce . 1);
             }
 

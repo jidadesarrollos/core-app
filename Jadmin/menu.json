@@ -50,10 +50,15 @@
                                 "class": "nav-item"
                             },
                             "items": {
-                                "ajustes": {
+                                "Usuarios": {
 
                                     "label": "<i class=\"nav-icon i-Clock-3\"></i><span class=\"nav-text\">Usuarios</span>",
                                     "url": "#"
+                                },
+                                "Galerias": {
+
+                                    "label": "<i class=\"nav-icon i-File-Text--Image\"></i><span class=\"nav-text\">Galerias</span>",
+                                    "url": "/jadmin/galerias"
                                 }
                             } 
                         }

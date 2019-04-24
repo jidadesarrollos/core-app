@@ -29,13 +29,13 @@ class Formulario extends Selector {
      *
      * @var $_ce ;
      */
-    static private $_ce = 20001;
-    public $name;
-    public $tagPost = true;
-    public $action = "";
-    public $method = "POST";
-    public $enctype = "application/x-www-form-urlencoded";
-    public $target = "";
+    static private $_ce     = 20001;
+    public         $name;
+    public         $tagPost = true;
+    public         $action  = "";
+    public         $method  = "POST";
+    public         $enctype = "application/x-www-form-urlencoded";
+    public         $target  = "";
 
     /**
      * Determina si los valores del formulario deben ser validados o cambiados a entidades HTML
@@ -65,23 +65,11 @@ class Formulario extends Selector {
      */
     public $jidaValidador = true;
     /**
-     * Registra el query realizado para obtener la data en modo update
-     *
-     * @var string $_consultaUpdate
-     */
-    private $_consultaUpdate = "";
-    /**
      * Label a usar en el boton de envio por defecto
      *
      * @var string $_labelBotonEnvio
      */
-    public $_labelBotonEnvio = "Guardar";
-    private $_fieldsets = [];
-    /**
-     * @var string $_id id del formulario
-     * @access private
-     */
-    private $_id;
+    public  $_labelBotonEnvio = "Guardar";
     /**
      * Define si el formulario lleva labels o no
      *
@@ -92,13 +80,30 @@ class Formulario extends Selector {
      */
     public $labels = true;
     /**
+     * Arreglo con botones del formulario
+     *
+     * @var array $_botones
+     */
+    public $_botones;
+    /**
+     * Registra el query realizado para obtener la data en modo update
+     *
+     * @var string $_consultaUpdate
+     */
+    private $_consultaUpdate = "";
+    private $_fieldsets       = [];
+    /**
+     * @var string $_id id del formulario
+     * @access private
+     */
+    private $_id;
+    /**
      * Agrega un titulo al formulario
      *
      * @var Selector $_titulo
      * @see Selector
      */
     private $_titulo = false;
-
     /**
      * Registra el orden de los campos
      *
@@ -113,7 +118,7 @@ class Formulario extends Selector {
      * @public $_plantillaItem
      * @access private
      */
-    private $_plantillaItem =
+    private $_plantillaItem    =
         '
 	<section class="col-md-{{:cols}}">
 		<div class="form-group">
@@ -129,7 +134,6 @@ class Formulario extends Selector {
 			</div>
 		</div>
 	</section>';
-
     /**
      * @var array $_configuracion Configuracion del formulario
      */
@@ -144,7 +148,7 @@ class Formulario extends Selector {
      * @var int $_columnasTotal
      */
     private $_columnasTotal = 12;
-    private $_css = [
+    private $_css           = [
         'input'             => 'form-control',
         'titulo'            => 'titulo-form',
         'columnaBotones'    => 'col-md-12 text-right',
@@ -154,7 +158,6 @@ class Formulario extends Selector {
         'seccionTitulo'     => 'page-header',
 
     ];
-
     /**
      * Expresion regular para validar estructura
      *
@@ -188,20 +191,13 @@ class Formulario extends Selector {
      * @var $_totalCampos ;
      */
     private $_totalCampos;
-
-    /**
-     * Arreglo con botones del formulario
-     *
-     * @var array $_botones
-     */
-    public $_botones;
     /**
      * Define el identificador para buscar data en modo update
      *
+     * @param mixed $_idEdicion ;
+     *
      * @internal Si su valor es vacio el formulario se armara en modo
      * insert, caso contrario modo update
-     *
-     * @param mixed $_idEdicion ;
      *
      */
     private $_idEdicion;
@@ -254,40 +250,10 @@ class Formulario extends Selector {
     }
 
     /**
-     * Define la ruta en la cual buscar el archivo de configuracion del formulario
-     *
-     * @param  string $form Ruta del archivo json a buscar
-     * @return string Ruta fisica donde debe ubicarse el formulario solicitado
-     */
-    private function _obtRutaFormulario($form) {
-
-        $partes = explode("/", $form);
-
-        if (count($partes) === 1) {
-            return Estructura::$directorio . "/Aplicacion/Formularios/$form";
-        }
-
-        $jida = array_shift($partes);
-        $ruta = Estructura::$rutaJida;
-
-        if (strtolower($jida) != 'jida') {
-            $ruta = Estructura::$directorio . '/Aplicacion';
-            array_unshift($partes, $jida);
-        }
-
-        if (count($partes) > 1) {
-            $ruta .= '/Modulos/' . ucfirst(array_shift($partes));
-        }
-
-        $ruta .= '/Formularios/' . ucfirst(array_shift($partes));
-
-        return $ruta;
-
-    }
-
-    /**
      * Carga el Formulario a mostrar
      *
+     * @param string $form Nombre del Formulario
+     * @throws Excepcion
      * @internal Verifica si existe un archivo json para el formulario pedido, carga la informacion del mismo y la
      *           procesa.
      *
@@ -295,8 +261,6 @@ class Formulario extends Selector {
      * excepcion.
      *
      * @method _cargarFormulario
-     * @param string $form Nombre del Formulario
-     * @throws Excepcion
      */
     private function _cargarFormulario($form, $dataEdicion) {
 
@@ -321,6 +285,56 @@ class Formulario extends Selector {
 
     }
 
+    /**
+     * Define la ruta en la cual buscar el archivo de configuracion del formulario
+     *
+     * @param string $form Ruta del archivo json a buscar
+     * @return string Ruta fisica donde debe ubicarse el formulario solicitado
+     */
+    private function _obtRutaFormulario($form) {
+
+        $partes = explode("/", $form);
+
+        if (count($partes) === 1) {
+            return Estructura::$directorio . "/Aplicacion/Formularios/$form";
+        }
+
+        $jida = array_shift($partes);
+        $ruta = Estructura::$rutaJida;
+
+        if (strtolower($jida) != 'jida') {
+            if (strtolower($jida) === 'jadmin')
+                $ruta = Estructura::$directorio . '/Jadmin';
+            else {
+                $ruta = Estructura::$directorio . '/Aplicacion';
+                array_unshift($partes, $jida);
+            }
+        }
+
+        if (count($partes) > 1) {
+            $ruta .= '/Modulos/' . ucfirst(array_shift($partes));
+        }
+
+        $ruta .= '/Formularios/' . ucfirst(array_shift($partes));
+
+        return $ruta;
+
+    }
+
+    private function validarJson() {
+
+        $contenido = file_get_contents($this->_path);
+        $this->_configuracion = json_decode($contenido);
+
+        if (json_last_error() != JSON_ERROR_NONE) {
+            $msj = "El formulario  {$this->_path} no esta estructurado correctamente";
+            Excepcion::procesar($msj, self::$_ce . 2);
+
+        }
+
+        return $this;
+    }
+
     private function _configuaricionInicial() {
 
         $this->_id = $this->_configuracion->identificador;
@@ -336,6 +350,61 @@ class Formulario extends Selector {
         ]);
 
         $this->_botonEnvio();
+    }
+
+    /**
+     * Get y Set para css de los componentes del formulario
+     * @method css
+     *
+     * @param string $elemento Elemento al que acceder
+     * @param string $css [opcional] Si es pasado, sera asignado como clase css a $elemento
+     *
+     * @return mixed Si el metodo es usado como setter retornara el mismo objeto form,
+     * si es usado como getter retornara la clase del elemento si es conseguido, caso contrario
+     * retornara un string vacio
+     */
+    function css($elemento, $css = "") {
+
+        if (!empty($css)) {
+            $this->_css[$elemento] = $css;
+
+            return $this;
+
+        }
+        else {
+            if (array_key_exists($elemento, $this->_css)) {
+                return $this->_css[$elemento];
+            }
+
+        }
+
+        return "";
+    }
+
+    /**
+     * Genera el boton de envio si es requerido
+     */
+    private function _botonEnvio() {
+
+        if ($this->botonEnvio) {
+            $id = 'btn' . $this->_id;
+
+            $btn = new Selector('input');
+
+            $btn->attr([
+                'id'    => $id,
+                'name'  => $id,
+                'type'  => 'submit',
+                'value' => 'Guardar'
+            ])->addClass($this->css('botonEnvio'));
+
+            if ($this->jidaValidador) {
+                $btn->data('jida', 'validador');
+            }
+            $this->_botones['principal'] = $btn;
+
+        }
+
     }
 
     /**
@@ -367,24 +436,6 @@ class Formulario extends Selector {
 
     }
 
-    /**
-     * Remueve la etiqueta FORM del formulario
-     *
-     * Esta funcion puede llamarse cuando se deseen integrar multiples formularios
-     * en una misma pantalla
-     * @method removerTagForm
-     *
-     * @param string $class Clase CSS que se desee agregar al div
-     *
-     * @return void
-     */
-    function removerTagForm($class = "form-alone") {
-
-        $this->selector = 'DIV';
-        $this->attr = [];
-        $this->addClass($class);
-    }
-
     private function _obtenerDataUpdate() {
 
         if (!is_object($this->_idEdicion)) {
@@ -404,73 +455,129 @@ class Formulario extends Selector {
 
     }
 
-    private function validarJson() {
+    /**
+     * Instancia los campos configurados del formulairo
+     *
+     * @internal gestiona los campos del formulario realizando una instancia
+     * del objeto SelectorInput sobre cada campo para su posterior renderizacion
+     * @method _instanciarCamposConfiguracion
+     * @see      \JidaRender\SelectorInput
+     * @use      self::labels
+     */
+    private function _instanciarCamposConfiguracion() {
 
-        $contenido = file_get_contents($this->_path);
-        $this->_configuracion = json_decode($contenido);
-
-        if (json_last_error() != JSON_ERROR_NONE) {
-            $msj = "El formulario  {$this->_path} no esta estructurado correctamente";
-            Excepcion::procesar($msj, self::$_ce . 2);
-
+        $this->_totalCampos = count((array)$this->_configuracion->campos);
+        if ($this->_totalCampos < 1) {
+            Excepcion::procesar("El formulario " . $this->_formulario . " no tiene campos registrados",
+                self::$_ce . 6);
         }
 
-        return $this;
+        foreach ($this->_configuracion->campos as $id => $campo) {
+
+            if (!is_object($campo)) {
+                continue;
+            }
+
+            if (property_exists($campo, 'eventos')) {
+                $this->_validaciones[$campo->name] = $campo->eventos;
+                $this->_dataCampos[$campo->name] = (array)$campo;
+            }
+
+            if (!property_exists($campo, 'type')) {
+                $campo->type = "text";
+            }
+
+            if (property_exists($campo, 'orden')) {
+                $orden = $campo->orden;
+            }
+            else {
+                $orden = 0;
+            }
+            if (!array_key_exists($orden, $this->_arrayOrden)) {
+                $this->_arrayOrden[$orden] = $campo->id;
+            }
+            else {
+                $this->_arrayOrden[] = $campo->id;
+            }
+
+            $this->_campos[$campo->id] = $this->_instanciarCampo($campo);
+
+        }//fin foreach
+        ksort($this->_arrayOrden);
+
+        $this->_arrayOrden;
+
     }
 
     /**
-     * Genera el boton de envio si es requerido
+     * Genera la instancia de un SelectorInput
+     *
+     * @throws \Exception
+     * @since 0.6
+     *
      */
-    private function _botonEnvio() {
+    private function _instanciarCampo($_campo) {
 
-        if ($this->botonEnvio) {
-            $id = 'btn' . $this->_id;
+        $selectorInput = $this->_obtSelector($_campo);
 
-            $btn = new Selector('input');
+        if ($this->labels and $_campo->type != 'hidden') {
 
-            $btn->attr([
-                'id'    => $id,
-                'name'  => $id,
-                'type'  => 'submit',
-                'value' => 'Guardar'
-            ])->addClass($this->css('botonEnvio'));
-
-            if ($this->jidaValidador) {
-                $btn->data('jida', 'validador');
-            }
-            $this->_botones['principal'] = $btn;
+            $label = new Selector('label', ['for' => $_campo->id]);
+            $label->innerHTML((property_exists($selectorInput, 'label') ? $_campo->label : $_campo->name));
+            $selectorInput->label = $label;
 
         }
 
+        if (array_key_exists($selectorInput->name, $this->_dataUpdate)) {
+            $selectorInput->valor($this->_dataUpdate[$selectorInput->name]);
+        }
+
+        if (property_exists($_campo, 'eventos') and !empty($_campo->eventos)) {
+            $selectorInput->data('validacion', json_encode((array)$_campo->eventos));
+        }
+
+        $selectorInput->configuracion = $selectorInput;
+
+        return $selectorInput;
     }
 
     /**
-     * Get y Set para css de los componentes del formulario
-     * @method css
+     * Define el objeto SelectorInput a retornar
+     * @method _obtSelector
      *
-     * @param string $elemento Elemento al que acceder
-     * @param string $css [opcional] Si es pasado, sera asignado como clase css a $elemento
-     *
-     * @return mixed Si el metodo es usado como setter retornara el mismo objeto form,
-     * si es usado como getter retornara la clase del elemento si es conseguido, caso contrario
-     * retornara un string vacio
+     * @param $_campo
+     * @return SelectorInput|Inputs\InputSeleccion|Inputs\Select
+     * @throws \Exception
+     * @since 0.6
      */
-    function css($elemento, $css = "") {
+    private function _obtSelector($_campo) {
 
-        if (!empty($css)) {
-            $this->_css[$elemento] = $css;
-
-            return $this;
-
-        }
-        else {
-            if (array_key_exists($elemento, $this->_css)) {
-                return $this->_css[$elemento];
-            }
-
+        if (array_key_exists($_campo->name, $this->_dataUpdate)) {
+            $_campo->value = $this->_dataUpdate[$_campo->name];
         }
 
-        return "";
+        switch ($_campo->type) {
+            case 'select':
+                $selector = new Inputs\Select($_campo, ['padre' => $this]);
+                break;
+            case 'checkbox':
+            case 'radio':
+                $selector = new Inputs\InputSeleccion($_campo, ['padre' => $this]);
+                break;
+            default:
+                $namespace = '\App\Config\Formularios\\';
+                $claseUpper = $namespace . Medios\Cadenas::upperCamelCase($_campo->type);
+                if (class_exists($claseUpper)) {
+                    $selector = new $claseUpper($_campo, ['padre' => $this]);
+                }
+                else {
+                    $selector = new SelectorInput($_campo, ['padre' => $this]);
+                }
+                break;
+        }
+
+        return $selector;
+
     }
 
     /**
@@ -587,128 +694,21 @@ class Formulario extends Selector {
     }
 
     /**
-     * Define el objeto SelectorInput a retornar
-     * @method _obtSelector
+     * Remueve la etiqueta FORM del formulario
      *
-     * @since 0.6
-     * @param $_campo
-     * @return SelectorInput|Inputs\InputSeleccion|Inputs\Select
-     * @throws \Exception
+     * Esta funcion puede llamarse cuando se deseen integrar multiples formularios
+     * en una misma pantalla
+     * @method removerTagForm
+     *
+     * @param string $class Clase CSS que se desee agregar al div
+     *
+     * @return void
      */
-    private function _obtSelector($_campo) {
+    function removerTagForm($class = "form-alone") {
 
-        if (array_key_exists($_campo->name, $this->_dataUpdate)) {
-            $_campo->value = $this->_dataUpdate[$_campo->name];
-        }
-
-        switch ($_campo->type) {
-            case 'select':
-                $selector = new Inputs\Select($_campo, ['padre' => $this]);
-                break;
-            case 'checkbox':
-            case 'radio':
-                $selector = new Inputs\InputSeleccion($_campo, ['padre' => $this]);
-                break;
-            default:
-                $namespace = '\App\Config\Formularios\\';
-                $claseUpper = $namespace . Medios\Cadenas::upperCamelCase($_campo->type);
-                if (class_exists($claseUpper)) {
-                    $selector = new $claseUpper($_campo, ['padre' => $this]);
-                }
-                else {
-                    $selector = new SelectorInput($_campo, ['padre' => $this]);
-                }
-                break;
-        }
-
-        return $selector;
-
-    }
-
-    /**
-     * Genera la instancia de un SelectorInput
-     *
-     * @since 0.6
-     *
-     * @throws \Exception
-     */
-    private function _instanciarCampo($_campo) {
-
-        $selectorInput = $this->_obtSelector($_campo);
-
-        if ($this->labels and $_campo->type != 'hidden') {
-
-            $label = new Selector('label', ['for' => $_campo->id]);
-            $label->innerHTML((property_exists($selectorInput, 'label') ? $_campo->label : $_campo->name));
-            $selectorInput->label = $label;
-
-        }
-
-        if (array_key_exists($selectorInput->name, $this->_dataUpdate)) {
-            $selectorInput->valor($this->_dataUpdate[$selectorInput->name]);
-        }
-
-        if (property_exists($_campo, 'eventos') and !empty($_campo->eventos)) {
-            $selectorInput->data('validacion', json_encode((array)$_campo->eventos));
-        }
-
-        $selectorInput->configuracion = $selectorInput;
-
-        return $selectorInput;
-    }
-
-    /**
-     * Instancia los campos configurados del formulairo
-     *
-     * @internal gestiona los campos del formulario realizando una instancia
-     * del objeto SelectorInput sobre cada campo para su posterior renderizacion
-     * @method _instanciarCamposConfiguracion
-     * @see      \JidaRender\SelectorInput
-     * @use      self::labels
-     */
-    private function _instanciarCamposConfiguracion() {
-
-        $this->_totalCampos = count((array)$this->_configuracion->campos);
-        if ($this->_totalCampos < 1) {
-            Excepcion::procesar("El formulario " . $this->_formulario . " no tiene campos registrados",
-                self::$_ce . 6);
-        }
-
-        foreach ($this->_configuracion->campos as $id => $campo) {
-
-            if (!is_object($campo)) {
-                continue;
-            }
-
-            if (property_exists($campo, 'eventos')) {
-                $this->_validaciones[$campo->name] = $campo->eventos;
-                $this->_dataCampos[$campo->name] = (array)$campo;
-            }
-
-            if (!property_exists($campo, 'type')) {
-                $campo->type = "text";
-            }
-
-            if (property_exists($campo, 'orden')) {
-                $orden = $campo->orden;
-            }
-            else {
-                $orden = 0;
-            }
-            if (!array_key_exists($orden, $this->_arrayOrden)) {
-                $this->_arrayOrden[$orden] = $campo->id;
-            }
-            else {
-                $this->_arrayOrden[] = $campo->id;
-            }
-
-            $this->_campos[$campo->id] = $this->_instanciarCampo($campo);
-
-        }//fin foreach
-        ksort($this->_arrayOrden);
-
-        $this->_arrayOrden;
-
+        $this->selector = 'DIV';
+        $this->attr = [];
+        $this->addClass($class);
     }
 
     /**
@@ -782,11 +782,11 @@ class Formulario extends Selector {
     /**
      * Renderiza un formulario
      *
+     * @param array $titulos
+     *
      * @internal Genera el HTML de un formulario creado en el Framework, con toda la personalizacion
      * creada
      * @method armarFormulario
-     *
-     * @param array $titulos
      *
      * @example  $titulos = [0=>['limite'=>10,'titulo'=>'Titulo del fieldset']]
      */
@@ -936,12 +936,12 @@ class Formulario extends Selector {
     /**
      * Permite configurar botones para el formulario
      *
-     * @internal Permite acceder a la clase Selector del boton pedido para configurarlo
-     *
      * @param string $boton identificador del Boton.
      * @param string $label [opcional] Si es pasado sera agregado como label del boton
      *
      * @return object $selector Objeto Selector
+     * @internal Permite acceder a la clase Selector del boton pedido para configurarlo
+     *
      * @see      Selector
      * @method boton
      *
@@ -976,10 +976,10 @@ class Formulario extends Selector {
     /**
      * Valida un formulario
      *
+     * @param array $data Arreglo de data a validar, generalmente corresponde a la data post.
      * @internal Verifica que la data pasada cumpla con las validaciones registradas en el formulario
      *
      * @method validar
-     * @param  array $data Arreglo de data a validar, generalmente corresponde a la data post.
      */
     function validar(&$data = "") {
 
