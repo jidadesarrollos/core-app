@@ -5,6 +5,9 @@
     let $form = $(page.querySelector('form'));
 
     let btnCierre = page.querySelector('.btn-cierre');
+    let btnGuardar = page.querySelector('#btnFormularioMedia');
+
+    btnGuardar.addEventListener('click', (e) => enviarForm(e, $form));
 
     btnCierre.addEventListener('click', () => bootbox.hideAll());
 
@@ -29,33 +32,24 @@
 
     function enviarForm(evento, form, boton) {
 
-        let formData = new FormData(form);
-        let $target = $(boton);
-        formData.append('btnMedia', true);
-        $target.attr({
-            'value': 'Guardando...',
-            'disabled': true
+        evento.preventDefault();
+        let url = form.attr('action');
+        let formData = form.serializeArray();
+        let data = {};
+        $(formData ).each(function(index, obj){
+            data[obj.name] = obj.value;
         });
+        data.btnFormularioMedia = 'send';
 
         $.ajax({
-            'url': form.action,
-            'data': formAObjeto(formData),
+            'url': url,
+            'data': data,
             'type': 'post',
             'dataType': 'json'
 
         }).done(respuesta => {
 
-            $target.attr({
-                'value': 'Guardar',
-                'disabled': false
-            });
-
-            if (!respuesta.estatus) {
-                imprimirMensaje('error', 'No se ha podido guardar, intente nuevamente.');
-                return;
-            }
-
-            imprimirMensaje('success', 'Datos guardados');
+            bootbox.hideAll();
 
         });
 

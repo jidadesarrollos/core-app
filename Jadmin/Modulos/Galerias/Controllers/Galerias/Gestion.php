@@ -9,29 +9,29 @@ use JidaRender\Formulario;
 
 Trait Gestion {
 
-    function _gestion($idBanner) {
+    function _gestion($id_media) {
 
-        $form = new Formulario('jadmin/galerias/Media', $idBanner);
-        $form->action = $this->obtUrl('', ['id' => $idBanner]);
+        $form = new Formulario('jadmin/galerias/Media', $id_media);
+        //$form->action = $this->obtUrl('', ['id' => $id_media]);
 
         $form->boton('principal')->attr('type', 'button');
 
-        if ($this->solicitudAjax() and $this->post('btnMedia')) {
-            $this->gestionForm($form, $idBanner);
+        if ($this->post('btnFormularioMedia')) {
+            $this->gestionForm($form, $id_media);
         }
 
-        if (empty($idBanner)) {
+        if (empty($id_media)) {
             $this->redireccionar('/jadmin/galerias/');
         }
 
         $this->data([
-            'id'   => $idBanner,
+            'id'   => $id_media,
             'form' => $form->render()
         ]);
 
     }
 
-    private function gestionForm(Formulario $form, $idBanner) {
+    private function gestionForm(Formulario $form, $id_media) {
 
         if (!$form->validar()) {
             //la clase formulario genera la variable de sesion __msjForm automaticamente
@@ -39,7 +39,7 @@ Trait Gestion {
             Sesion::destruir('__msjForm');
             $this->respuestaJson(['estatus' => false]);
         }
-        $banner = new Medias($idBanner);
+        $banner = new Medias($id_media);
 
         if (!$banner->salvar($this->post())) {
             $this->respuestaJson(['estatus' => false]);
