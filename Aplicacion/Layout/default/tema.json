@@ -7,23 +7,23 @@
   "dev": {
     "css": {
       "default": {
-        "bt": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css",
-        "principal": "{tema}/htdocs/css/principal.css"
+        "principal": "{tema}/htdocs/css/principal.css",
+        "bt": "{tema}/css/bootstrap.css"
       }
     },
     "js": {
       "default": {
-        "bt": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
+        "bt": "{tema}/htdocs/js/bootstrap.bundle.js",
         "principal": "{tema}/htdocs/js/principal.js"
       }
     }
   },
   "prod": {
     "css": {
-      "principal": "{tema}/htdocs/css/principal.bundle.css"
+      "default": "{tema}/htdocs/css/default.bundle.css"
     },
     "js": {
-      "principal": "{tema}/htdocs/js/principal.bundle.js"
+      "default": "{tema}/htdocs/js/default.bundle.js"
     }
   }
 }

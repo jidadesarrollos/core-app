@@ -7,7 +7,7 @@ use Jida\Configuracion\Config;
 class Configuracion extends Config {
 
     const NOMBRE_APP = 'Aplicación Jida';
-    const ENTORNO_APP = 'dev';
+    const ENTORNO_APP = 'prod';
     const URL_BASE = '';
     const URL_ABSOLUTA = '';
     const ENVIAR_EMAIL_ERROR = false;

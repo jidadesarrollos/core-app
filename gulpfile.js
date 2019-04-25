@@ -1,3 +1,10 @@
+var gulp = require('gulp'),
+    minifyCSS = require('gulp-minify-css'),
+    concatCss = require('gulp-concat-css'),
+    concatJS = require('gulp-concat'),
+    notify = require('gulp-notify'),
+    uglify = require('gulp-uglify');
+
 const path = require('path');
 const fs = require('fs');
 const read = require('fs-readdir-recursive');
@@ -8,15 +15,18 @@ let archivos = read(__dirname);
 let archivostema = [];
 let webpackTask = [];
 
-for (let archivo in archivos) if (archivos[archivo].endsWith('tema.json'))
-    archivostema.push(archivos[archivo]);
+for (let archivo in archivos) {
+    archivos[archivo].endsWith('tema.json') ? archivostema.push(archivos[archivo]) : null;
+}
 
+let count = 0;
+var nameTask = [];
 archivostema.forEach(function (archivo) {
     let url = archivo.slice(0, -9);
     let tema = JSON.parse(fs.readFileSync(url + 'tema.json', 'utf8'));
     let libJS = {};
     let libCSS = {};
-
+    count++;
 
     for (let group in tema.dev.js) {
         if (typeof tema.dev.js[group] === 'string') {
@@ -97,53 +107,37 @@ archivostema.forEach(function (archivo) {
     }
 
     if (libJS !== {}) {
-        webpackTask.push({
-            mode: 'none',
-            output: {
-                path: path.resolve(__dirname, url + '/htdocs/js'),
-                filename: '[name].bundle.js'
-            },
-            entry: libJS
-        });
+        for (let fileEnd in libJS) {
+            nameTask.push(`tema${count}-${fileEnd}-js`);
+            gulp.task(`tema${count}-${fileEnd}-js`, function () {
+
+                gulp.src(libJS[fileEnd])
+                    .pipe(concatJS(`${fileEnd}.bundle.js`))
+                    .pipe(gulp.dest(url + '/htdocs/js/'))
+                    .pipe(notify('compilados archivos js'));
+
+            });
+        }
+
     }
-    /*
+
     if (libCSS !== {}) {
-        webpackTask.push({
-            entry: libCSS,
-            resolveLoader: {
-                modules: [
-                    'node_modules'
-                ]
-            },
-     mode: 'none',
-            module: {
-                rules: [
-                    {
-                        test: /\.css$/,
-                        use: ExtractTextPlugin.extract({
-                            loader: 'css-loader',
-                            options: {
-                                minimize: true
-                            }
-                        })
-                    }
+        for (let fileEnd in libCSS) {
+            nameTask.push(`tema${count}-${fileEnd}-css`);
 
-                ]
-            },
-            plugins: [
-                new ExtractTextPlugin({
-                    path: path.resolve(__dirname, url + '/htdocs/js'),
-                    filename: '[name].bundle.css'
-                })
+            gulp.task(`tema${count}-${fileEnd}-css`, function () {
+                return gulp.src(libCSS[fileEnd])
+                    .pipe(concatCss(`${fileEnd}.bundle.css`))
+                    .pipe(gulp.dest(`${url}htdocs/css/`))
+                    .pipe(notify('compilados archivos css'));
 
-            ]
-     });
+            });
+        }
     }
-     */
-
 });
 
+console.log(nameTask);
 
-fs.writeFileSync('./data.json', JSON.stringify(webpackTask), 'utf-8');
+gulp.task('default', nameTask);
 
-module.exports = webpackTask[0];
+
