@@ -7,8 +7,8 @@
   "dev": {
     "css": {
       "default": {
-        "principal": "{tema}/htdocs/css/principal.css",
-        "bt": "{tema}/css/bootstrap.css"
+        "bt": "{tema}/htdocs/css/bootstrap.css",
+        "principal": "{tema}/htdocs/css/principal.css"
       }
     },
     "js": {
