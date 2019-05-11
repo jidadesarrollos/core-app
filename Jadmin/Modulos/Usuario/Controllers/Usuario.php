@@ -52,7 +52,7 @@ class Usuario extends JControl {
 
     public function cambioClave() {
 
-        $formCambioClave = new Formulario('jida/cambioClave');
+        $formCambioClave = new Formulario('jida/CambioClave');
         $formCambioClave->boton('principal', 'Cambiar Clave');
 
         $this->data(['formulario' => $formCambioClave->render()]);

@@ -24,7 +24,7 @@
                         <i class="i-Lock-User mr-1"></i> <?= \Jida\Medios\Sesion::$usuario->nombre() ?>
                     </div>
                     <a class="dropdown-item" href="<?= $this->urlBase ?>/jadmin/usuario/cambioclave">Cambiar clave</a>
-                    <a class="dropdown-item" href="<?= $this->urlBase ?>/jadmin/logout">Salir</a>
+                    <a class="dropdown-item" href="<?= $this->urlBase ?>/jadmin/usuario/logout">Salir</a>
                 </div>
             </div>
         </div>

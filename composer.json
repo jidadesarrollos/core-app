@@ -28,5 +28,8 @@
         "./Render"
       ]
     }
+  },
+  "require": {
+    "ext-json": "*"
   }
 }

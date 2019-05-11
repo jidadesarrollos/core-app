@@ -101,26 +101,37 @@ trait Usuarios {
         ]);
     }
 
-    public function gestion($id_usuario) {
+    public function gestion($id_usuario = "") {
 
         $form = new Formulario('jida/Usuarios/GestionUsuarios', $id_usuario);
         $usuario = new Usuario($id_usuario);
 
-        if ($this->post('btnGestionUsuarios')) {
+        if ($this->post('btnUsuarios')) {
 
             if ($form->validar()) {
 
-                $this->post('clave', $usuario->clave);
+                if(!empty($id_usuario)){
+                    $this->post('clave', $usuario->clave);
+                } else {
+                    $this->post('clave', md5('123456'));
+                }
+
+                $this->post('activo', 1);
+                $this->post('validacion', 1);
+
 
                 if ($usuario->salvar($this->post())) {
 
                     $accion = (empty($id)) ? 'guardado' : 'modificado';
                     Mensajes::almacenar(Mensajes::suceso("El usuario ha sido {$accion} correctamente"));
                     $this->redireccionar('/jadmin/usuario');
+                } else {
+                    echo 'ERROR';
                 }
             }
             else {
-                $form::msj('error', 'Los datos ingresados no son v&aacute;lidos');
+                echo 'ERROR';
+                //$form::msj('error', 'Los datos ingresados no son v&aacute;lidos');
             }
         }
 

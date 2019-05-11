@@ -8,6 +8,7 @@ class Config {
     static public $modulos = [
         'Formularios',
         'Menus',
+        'Galerias',
         'Usuario'
     ];
 }

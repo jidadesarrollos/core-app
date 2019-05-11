@@ -116,9 +116,10 @@ class Menu extends Selector {
         if ($path) {
 
             $directorio = $path . DS . $menu;
-            if (!Medios\Directorios::validar($directorio)) {
-                Excepcion::procesar("No existe el menu $directorio", self::$_ce . 1);
+            if (Medios\Directorios::validar($directorio)) {
+                Excepcion::procesar("No existe el menu $menu", self::$_ce . 1);
             }
+
 
             return $path . DS . $menu;
 
@@ -136,7 +137,7 @@ class Menu extends Selector {
 
             $nombre = implode("/", $partes);
 
-            if (!Medios\Directorios::validar(Estructura::$rutaAplicacion . "/Jadmin/$nombre")) {
+            if (Medios\Directorios::validar(Estructura::$rutaAplicacion . "/Jadmin/$nombre")) {
                 return Estructura::$rutaAplicacion . "/Jadmin/$nombre";
             }
 

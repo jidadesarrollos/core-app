@@ -9,12 +9,13 @@ use Jida\Medios\Debug;
 
 class Handler extends \Jida\Manager\Url\Handler {
 
-    protected $path = 'jadmin';
+    protected $path   = 'jadmin';
     protected $nombre = 'jadmin';
 
     private $modulos = [
         'formularios' => 'formularios',
         'menus'       => 'menus',
+        'galerias'    => 'galerias',
         'usuario'     => 'usuario'
     ];
 
@@ -41,39 +42,6 @@ class Handler extends \Jida\Manager\Url\Handler {
 
     }
 
-    private function _moduloApp($modulo) {
-
-        $modulo = Definicion::objeto($modulo);
-
-        $this->url->modulo = $modulo;
-        Estructura::$modulo = $modulo;
-        Estructura::$namespace = "App\\Modulos\\{$modulo}\\Jadmin\\Controllers";
-        $ds = DIRECTORY_SEPARATOR;
-        Estructura::$ruta = Estructura::$rutaAplicacion . "{$ds}Modulos{$ds}{$modulo}{$ds}Controllers";
-        Estructura::$rutaModulo = Estructura::$rutaAplicacion . "{$ds}Modulos{$ds}{$modulo}";
-
-    }
-
-    private function _definirModulo($modulo) {
-
-        $modulo = Definicion::objeto($modulo);
-        $this->url->modulo = $modulo;
-        Estructura::$modulo = $modulo;
-        Estructura::$namespace = "Jadmin\\Modulos\\{$modulo}\\Controllers";
-        Estructura::$ruta = __DIR__ . DS . "Modulos" . DS . "Controllers";
-        Estructura::$rutaModulo = __DIR__ . DS . "Modulos" . DS . $modulo;
-
-    }
-
-    private function definirJadmin($parametro) {
-
-        Estructura::$namespace = "Jadmin\\Controllers";
-        Estructura::$ruta = __DIR__;
-        Estructura::$rutaModulo = __DIR__;
-        Estructura::$modulo = 'Jadmin';
-
-    }
-
     private function definirTema() {
 
         $tema = Tema::obtener();
@@ -96,6 +64,40 @@ class Handler extends \Jida\Manager\Url\Handler {
         ];
 
         $tema->definir($configuracion);
+
+    }
+
+    private function _moduloApp($modulo) {
+
+        $modulo = Definicion::objeto($modulo);
+
+        $this->url->modulo = $modulo;
+        Estructura::$modulo = $modulo;
+        Estructura::$namespace = "App\\Modulos\\{$modulo}\\Jadmin\\Controllers";
+        $ds = DIRECTORY_SEPARATOR;
+        Estructura::$ruta = Estructura::$rutaAplicacion . "{$ds}Modulos{$ds}{$modulo}{$ds}Controllers";
+        Estructura::$rutaModulo = Estructura::$rutaAplicacion . "{$ds}Modulos{$ds}{$modulo}";
+
+    }
+
+    private function _definirModulo($modulo) {
+
+        $modulo = Definicion::objeto($modulo);
+        $this->url->modulo = $modulo;
+        Estructura::$modulo = $modulo;
+        Estructura::$namespace = "Jadmin\\Modulos\\{$modulo}\\Controllers";
+        Estructura::$ruta = __DIR__ . DS . "Modulos" . DS . "Controllers";
+        Estructura::$rutaModulo = __DIR__ . DS . "Modulos" . DS . $modulo;
+        Estructura::$urlModulo = Estructura::$urlBase . '/Jadmin/Modulos' . DS . $modulo;
+
+    }
+
+    private function definirJadmin($parametro) {
+
+        Estructura::$namespace = "Jadmin\\Controllers";
+        Estructura::$ruta = __DIR__;
+        Estructura::$rutaModulo = __DIR__;
+        Estructura::$modulo = 'Jadmin';
 
     }
 }
