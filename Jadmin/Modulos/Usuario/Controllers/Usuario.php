@@ -24,7 +24,7 @@ class Usuario extends JControl {
     public function login() {
 
         $this->layout('login');
-        
+
         $formLogin = new Formulario('jida/Login');
         $formLogin->boton('principal', 'Iniciar sesión');
         $formLogin->boton('principal')->attr('class', 'btn btn-primary btn-block');
@@ -46,6 +46,7 @@ class Usuario extends JControl {
             'logo'       => Estructura::$urlBase . '/htdocs/img/logo.png',
             'formulario' => $formLogin->render()
         ]);
+
 
     }
 
