@@ -22,7 +22,7 @@
                 "./Aplicacion/"
             ],
             "Jida\\": [
-                "./jida"
+                "./vendor/jida/jida"
             ]
         }
     }
