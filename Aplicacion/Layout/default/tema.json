@@ -1,6 +1,6 @@
 {
   "link": {
-    "shortcut icon": "/htdocs/img/favicon/favicon.png"
+    "shortcut icon": "{base}/htdocs/img/favicon/favicon.png"
   },
   "layout": "default",
   "layoutError": "error",

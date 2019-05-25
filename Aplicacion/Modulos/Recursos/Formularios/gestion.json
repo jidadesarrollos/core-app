@@ -1,0 +1,58 @@
+{
+  "nombre": "Gestion Recursos",
+  "identificador": "Gestion",
+  "clave_primaria": "id_recurso_humano",
+  "query": "select id_recurso_humano, nombres, apellidos, sexo, id_tipo_recurso from m_recursos_humanos",
+  "campos": [
+    {
+      "name": "nombres",
+      "id": "nombres",
+      "label": "Nombres",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "El campo Nombres es obligatorio"
+        }
+      }
+    },
+    {
+      "name": "apellidos",
+      "id": "apellidos",
+      "label": "Apellidos",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Debe ingresar al menos un apellido"
+        }
+      }
+    },
+    {
+      "name": "sexo",
+      "id": "sexo",
+      "label": "Sexo",
+      "type": "select",
+      "opciones": "=Seleccione;1=Mujer;2=Hombre",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Por favor indique si es hombre o mujer."
+        }
+      }
+    },
+    {
+      "name": "id_tipo_recurso",
+      "id": "id_tipo_recurso",
+      "label": "Tipo",
+      "type": "select",
+      "opciones": "=Seleccione una opción;select id_tipo_recurso, tipo_recurso from m_tipos_recursos",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "El campo Area es obligatorio"
+        }
+      }
+    },
+    {
+      "name": "id_recurso_humano",
+      "id": "id_recurso_humano",
+      "label": "id_recurso_humano",
+      "type": "hidden"
+    }
+  ]
+}

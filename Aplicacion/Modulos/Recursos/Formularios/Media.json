@@ -1,0 +1,73 @@
+{
+  "nombre": "Formulario de Archivos Multimedias",
+  "query": "select id_media_proyecto, nombre_archivo, titulo, descripcion, leyenda ,id_recurso_humano from t_media_proyectos",
+  "estructura": "",
+  "identificador": "FormularioMedia",
+  "clave_primaria": "id_media_proyecto",
+  "campos": {
+    "titulo": {
+      "label": "Titulo",
+      "name": "titulo",
+      "orden": "1",
+      "placeholder": "Titulo de la Imagen",
+      "visibilidad": "1",
+      "id": "titulo",
+      "type": "text"
+    },
+    "Descripcion": {
+      "label": "Descripcion",
+      "name": "descripcion",
+      "orden": "2",
+      "placeholder": "Descripcion",
+      "visibilidad": "1",
+      "id": "descripcion",
+      "type": "text"
+    },
+    "Leyenda": {
+      "label": "Leyenda",
+      "name": "leyenda",
+      "orden": "2",
+      "placeholder": "leyenda",
+      "visibilidad": "1",
+      "id": "leyenda",
+      "type": "textarea"
+    },
+    "video_opt": {
+      "label": "Incluye Video?",
+      "name": "tipo_media",
+      "opciones": "1=No;2=Si;",
+      "orden": "3",
+      "id": "tipo_media",
+      "type": "select"
+    },
+    "video_url": {
+      "label": "ID del Video en Vimeo",
+      "name": "video_url",
+      "orden": "4",
+      "visibilidad": "1",
+      "id": "video_url",
+      "type": "hidden"
+    },
+    "recurso": {
+      "label": "id_recurso_humano",
+      "name": "id_recurso_humano",
+      "id": "id_recurso_humano",
+      "type": "hidden"
+    },
+    "id_media": {
+      "label": "id_media_proyecto",
+      "name": "id_media_proyecto",
+      "id": "id_media",
+      "type": "hidden"
+    },
+    "nombre": {
+      "label": "Nombre",
+      "name": "nombre_archivo",
+      "orden": "1",
+      "placeholder": "Nombre",
+      "visibilidad": "1",
+      "id": "nombre",
+      "type": "hidden"
+    }
+  }
+}

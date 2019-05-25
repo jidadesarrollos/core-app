@@ -10,6 +10,7 @@ class Configuracion extends Config {
     const NOMBRE_APP = 'Aplicación Jida';
     const ENTORNO_APP = 'dev';
     const URL_BASE = '';
+    const PATH_JIDA = "jida";
     const URL_ABSOLUTA = '';
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
@@ -22,10 +23,11 @@ class Configuracion extends Config {
     ];
 
     static $modulos = [
-        'prueba' => 'prueba'
+        'prueba'   => 'prueba',
+        'Recursos' => 'recursos'
     ];
 
-    public $logo = 'default/htdocs/img/logo.png';
+    public $logo = '/htdocs/img/logo.png';
 
     public $mensajes = [
         'error'  => 'alert alert-danger',
