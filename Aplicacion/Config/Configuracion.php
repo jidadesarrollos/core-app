@@ -3,6 +3,7 @@
 namespace App\Config;
 
 use Jida\Configuracion\Config;
+use Jida\Manager\Estructura;
 
 class Configuracion extends Config {
 
@@ -12,6 +13,7 @@ class Configuracion extends Config {
     const URL_ABSOLUTA = '';
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
+    const LOGO = '/';
 
     public $tema = 'default';
 
