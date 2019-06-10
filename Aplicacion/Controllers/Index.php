@@ -10,16 +10,14 @@ class Index extends App {
 
     function index() {
 
-        $etiquetasOG = [
-            'og:title' => 'Aplicación Jida',
+        $og = [
+            'og:title' => 'Aplicación Jida Desarrollos',
             'og:type'  => 'website',
             'og:url'   => 'http://localhost/jidadesarrollos/core-app/',
             'og:image' => 'http://localhost/jidadesarrollos/core-app/htdocs/img/logo.png'
         ];
 
-        $this->data([
-            'og' => $etiquetasOG
-        ]);
+        $this->layout()->openGraph($og);
 
     }
 
