@@ -1,6 +1,4 @@
 <div class="jumbotron">
-    <h2>Hola mundo!</h2>
-    <p>Use esta plantilla para iniciar de forma rápida el desarrollo de un sitio web.</p>
+    <h2><?= $this->texto('titulo') ?></h2>
+    <p><?= $this->texto('texto') ?></p>
 </div>
-
-<?= $this->textos->home->texto1 ?>

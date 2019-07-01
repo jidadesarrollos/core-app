@@ -1,10 +1,16 @@
 {
   "es": {
-    "home": {
-      "texto1": "DETEIK",
-      "texto2": "the tabletop place",
-      "texto3": "Si quieres realizar un encargo, colaborar con nosotros o simplemente conocernos mejor, estamos encantados de hacerlo.",
-      "texto4": "Contacto"
-    }
+    "index": {
+      "titulo": "Hola mundo!",
+      "texto": "Use esta plantilla para iniciar de forma rápida el desarrollo de un sitio web."
+    },
+    "boton": "Enviar"
+  },
+  "en": {
+    "index": {
+      "titulo": "Hello world!",
+      "texto": "Use this template to quickly start the development of a website."
+    },
+    "boton": "Send"
   }
 }
