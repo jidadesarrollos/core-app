@@ -18,6 +18,11 @@ class App extends Control {
 
         $this->layout('principal');
 
+        $this->data([
+            'nombreApp' => Configuracion::NOMBRE_APP,
+            'urlBase'   => Configuracion::URL_BASE
+        ]);
+
     }
 
 }

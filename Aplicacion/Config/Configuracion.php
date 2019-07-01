@@ -16,18 +16,18 @@ class Configuracion extends Config {
     const HASH_CLAVE = "password_hash"; // opciones: password_hash, md5
     const MULTIIDIOMA = true;
 
-    public $tema     = 'default';
+    public $tema = 'default';
 
-    public $idiomas  = [
+    public $idiomas = [
         'es' => 'Español'
     ];
 
-    static $modulos  = [
+    static $modulos = [
         'TestGestor',
         'TestValidador'
     ];
 
-    public $logo     = 'default/htdocs/img/logo.png';
+    public $logo = 'default/htdocs/img/logo.png';
     public $mensajes = [
         'error'  => 'alert alert-danger',
         'suceso' => 'alert alert-success',
