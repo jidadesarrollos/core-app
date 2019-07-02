@@ -21,8 +21,7 @@ class App extends Control {
 
         $this->data([
             'nombreApp' => Configuracion::NOMBRE_APP,
-            'urlBase'   => Configuracion::URL_BASE,
-            'idioma'    => Estructura::$idioma
+            'urlBase'   => Configuracion::URL_BASE
         ]);
 
     }
