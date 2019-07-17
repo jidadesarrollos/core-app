@@ -23,6 +23,7 @@ class Configuracion extends Config {
     ];
 
     static $modulos = [
+        'Jadmin'
     ];
 
     public $logo = 'default/htdocs/img/logo.png';
