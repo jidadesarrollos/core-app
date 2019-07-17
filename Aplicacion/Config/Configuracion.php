@@ -13,7 +13,7 @@ class Configuracion extends Config {
     const PATH_JIDA = "jida";
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
-    const HASH_CLAVE = "password_hash"; // opciones: password_hash, md5
+    const HASH_CLAVE = "md5"; // opciones: password_hash, md5
     const MULTIIDIOMA = true;
 
     public $tema = 'default';
@@ -23,8 +23,6 @@ class Configuracion extends Config {
     ];
 
     static $modulos = [
-        'TestGestor',
-        'TestValidador'
     ];
 
     public $logo = 'default/htdocs/img/logo.png';
