@@ -10,21 +10,19 @@ class Configuracion extends Config {
     const ENTORNO_APP = 'dev';
     const URL_BASE = '';
     const URL_ABSOLUTA = '';
-    const PATH_JIDA = "jida";
+    const PATH_JIDA = 'jida';
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
-    const HASH_CLAVE = "md5"; // opciones: password_hash, md5
-    const MULTIIDIOMA = true;
+    const HASH_CLAVE = 'md5'; // opciones: password_hash, md5
+    const MULTIIDIOMA = false;
 
     public $tema = 'default';
 
     public $idiomas = [
-        'es' => 'Español',
-        'en' => 'English'
+        'es' => 'Español'
     ];
 
     static $modulos = [
-        'Jadmin'
     ];
 
     public $logo = 'default/htdocs/img/logo.png';
