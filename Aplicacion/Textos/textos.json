@@ -50,6 +50,7 @@
     "galeria": {
       "titulo_galeria": "Galería"
     },
+<<<<<<< HEAD
     "contacto": {
       "titulo_contacto": "Contacto",
       "listos_show": "¿Listos Para El Show?",
@@ -60,6 +61,9 @@
       "caja_email": "Ingresa tu E-mail",
       "boton_enviar": "Enviar"
     }
+=======
+    "inicio": "Inicio"
+>>>>>>> master
   },
   "en": {
     "menu": {
@@ -109,6 +113,7 @@
     "galeria": {
       "titulo_galeria": "Gallery"
     },
+<<<<<<< HEAD
     "contacto": {
       "titulo_contacto": "Contact",
       "listos_show": "Ready for the show ?",
@@ -119,5 +124,8 @@
       "caja_email": "Enter your email",
       "boton_enviar": "Send"
     }
+=======
+    "inicio": "Home"
+>>>>>>> master
   }
 }

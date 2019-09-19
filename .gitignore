@@ -10,5 +10,5 @@ bower_components
 /nbproject/
 /Render
 /Jadmin
-/jadmin
+./jadmin
 ./idea/core-app.iml
