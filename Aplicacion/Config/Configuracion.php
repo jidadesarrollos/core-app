@@ -19,8 +19,7 @@ class Configuracion extends Config {
     public $tema = 'default';
 
     public $idiomas = [
-        'es' => 'Español',
-        'en' => 'English'
+        'es' => 'Español'
     ];
 
     static $modulos = [
