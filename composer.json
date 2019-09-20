@@ -22,7 +22,7 @@
         "./jida"
       ],
       "Jadmin\\": [
-        "./Jadmin"
+        "./jadmin"
       ],
       "JidaRender\\": [
         "./Render"

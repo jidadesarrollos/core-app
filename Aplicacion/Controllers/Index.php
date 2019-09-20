@@ -12,15 +12,6 @@ class Index extends App {
 
     function index() {
 
-        $url = 'https://auth.dev.graphs.social/v4/private/getCredentials';
-        $params = [
-            'token' => 'ca9511e48c8cb32584cd692d786c91d5|160146'
-        ];
-        $curl = new Curl();
-        $curl->call('get', $url, $params);
-
-        return $this->respuestaJson($curl->arreglo());
-
     }
 
     function testpost() {
