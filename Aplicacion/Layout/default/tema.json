@@ -13,10 +13,6 @@
     },
     "js": {
       "default": {
-        "react": {
-          "src": "{base}/Aplicacion/Vistas/index/code.js",
-          "type": "module"
-        }
       }
     }
   },

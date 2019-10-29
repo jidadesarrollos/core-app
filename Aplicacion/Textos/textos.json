@@ -1,5 +1,7 @@
 {
   "es": {
+    "m_inicio": "INICIO",
+    "m_biografia": "BIOGRAFIA",
     "menu": {
       "inicio": "INICIO",
       "biografia": "BIOGRAFIA",
@@ -46,26 +48,11 @@
       "titulo_marco": "",
       "rol_marco": "Teclados",
       "bio_marco": ""
-    },
-    "galeria": {
-      "titulo_galeria": "Galería"
-    },
-<<<<<<< HEAD
-    "contacto": {
-      "titulo_contacto": "Contacto",
-      "listos_show": "¿Listos Para El Show?",
-      "escribenos_show": "Escríbenos y comparte lo que opinas o donde será la próxima presentación.",
-      "telefono": "Teléfono",
-      "caja_mensaje": "Escribe un mensaje",
-      "caja_nombre": "Ingresa tu nombre",
-      "caja_email": "Ingresa tu E-mail",
-      "boton_enviar": "Enviar"
     }
-=======
-    "inicio": "Inicio"
->>>>>>> master
   },
   "en": {
+    "m_inicio": "HOME",
+    "m_biografia": "BIOGRAPHY",
     "menu": {
       "inicio": "HOME",
       "biografia": "BIOGRAPHY",
@@ -109,23 +96,6 @@
       "bio_ale": "Alejandro Suau (Spanish - Mallorca) is the youngest of all the elements of \"THE N BAND\", a talented and prominent drummer, who joins the band at last minute. He began his musical studies at age 17. He fell in love with the instrument after a friend introduced him to this incredible world. He formed a band called FAST SNAILS with which  participated in the musical environment of Mallorca. Better known as \"ALEX\" in THE N BAND.",
       "titulo_marco": "MARCO SPAGNIOLI: Keyboards",
       "bio_marco": "Marco Spagnoli (Italian) is the keyboard, piano and Hammond sound that makes a particular groove of Blues and Funky and complements this eclectic evolutive and creative project. Born in a family of musicians. His experience begins at the age of 8 when he studied piano, and then graduated in Clarinet at the Conservatory, later at the age of 19, he toured Europe with important musical projects for 15 years. Today, he is Marco for THE N BAND."
-    },
-    "galeria": {
-      "titulo_galeria": "Gallery"
-    },
-<<<<<<< HEAD
-    "contacto": {
-      "titulo_contacto": "Contact",
-      "listos_show": "Ready for the show ?",
-      "escribenos_show": "Let us know what you think or where the next gig is",
-      "telefono": "Telephone",
-      "caja_mensaje": "Write a message",
-      "caja_nombre": "Enter your name",
-      "caja_email": "Enter your email",
-      "boton_enviar": "Send"
     }
-=======
-    "inicio": "Home"
->>>>>>> master
   }
 }

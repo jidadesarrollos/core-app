@@ -6,7 +6,7 @@
 
 namespace App\Controllers;
 
-class Index extends App {
+class Biografia extends App {
 
     function index() {
 
