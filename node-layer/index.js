@@ -39,8 +39,7 @@
         const dir = path.dirname(file);
         const isListened = modules.directories.has(dir);
 
-        console.log(2, 'change', file, typeof path.dirname(file));
-
+        console.log('updating bundles...');
         if (isListened) {
             const pathModule = modules.directories.get(dir);
             const module = modules.entries.get(pathModule);

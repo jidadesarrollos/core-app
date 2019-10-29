@@ -54,7 +54,6 @@ function Jida(section) {
 
             if (item.indexOf('{tema}') > -1) {
                 item = item.replace('{tema}', THEME_DIR);
-                console.log(1.1, item);
             }
             if (item.indexOf('{base}') > -1) {
                 item = item.replace('{base}', APP_DIR);
