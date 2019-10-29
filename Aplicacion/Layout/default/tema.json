@@ -13,8 +13,10 @@
     },
     "js": {
       "default": {
-        "bt": "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js",
-        "principal": "{tema}/htdocs/js/principal.js"
+        "react": {
+          "src": "{base}/Aplicacion/Vistas/index/code.js",
+          "type": "module"
+        }
       }
     }
   },
@@ -23,7 +25,10 @@
       "principal": "{tema}/htdocs/css/principal.bundle.css"
     },
     "js": {
-      "principal": "{tema}/htdocs/js/principal.bundle.js"
+      "principal": {
+        "src": "{tema}/htdocs/js/principal.bundle.js",
+        "type": "module"
+      }
     }
   }
 }

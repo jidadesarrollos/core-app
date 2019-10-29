@@ -9,7 +9,6 @@
     <title><?= $this->nombreApp; ?></title>
     <!-- #meta -->
     <!-- #css.default -->
-
     <?= $this->imprimirMeta(); ?>
     <?= $this->imprimirLibrerias('css', 'default'); ?>
 </head>
@@ -19,7 +18,7 @@
 
         echo $this->incluir('elementos/header');
         echo $this->contenido();
-        echo $this->incluir('elementos/footer')
+        echo $this->incluir('elementos/footer');
 
         ?>
     </div>

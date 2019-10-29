@@ -8,15 +8,22 @@ function Reader() {
         let entries = fs.readdirSync(dir);
         entries.forEach((file) => {
             const isDirectory = fs.statSync(`${dir}/${file}`).isDirectory();
-            console.log(1, isDirectory, file);
+            if (isDirectory) this.read(file);
             files.push(file);
         });
 
-        for (let i in files) {
-            console.log(i, files[i]);
+    };
+
+    this.getJson = file => {
+        try {
+
+            return JSON.parse(file);
+        }
+        catch (e) {
+            throw e;
         }
     };
 
-};
+}
 
 module.exports = Reader;
