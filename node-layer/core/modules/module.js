@@ -20,6 +20,11 @@ class Module {
         return this._config;
     }
 
+    /**
+     * Read the module and compile it at first time.
+     * @returns {Promise<void>}
+     * @private
+     */
     async _read() {
 
         const path = `${this._path}${Path.sep}${this.name}`;
@@ -28,6 +33,7 @@ class Module {
 
             const file = await fs.readFile(path, {'encoding': 'utf8'});
             this._config = JSON.parse(file);
+            return this.load();
 
         }
         catch (e) {
@@ -38,11 +44,12 @@ class Module {
 
     async load() {
         const output = `${this._path}${Path.sep}code.js`;
+        const outputMap = `${this._path}${Path.sep}code.map.js`;
         // todo: change logic, make types
         // todo: remove builder object
-        const builder = new (require('../builder/module'));
+        const builder = new (require('./builder'))();
         try {
-            await builder.loadModule(this._config, this._path, output);
+            await builder.loadModule(this._config, this._path, output, outputMap);
         }
         catch (e) {
             console.error('error', e);

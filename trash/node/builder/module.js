@@ -25,6 +25,7 @@ function ModuleBuilder(module) {
             code += `import {React} from '${jumps}htdocs/modules/libs/react.development.js';\n`;
             code += `import {ReactDOM} from '${jumps}htdocs/modules/libs/react-dom.development.js';\n`;
 
+            console.log(0, module);
             for (let prop of processors) {
 
                 if (!module.hasOwnProperty(prop)) continue;
@@ -48,10 +49,7 @@ function ModuleBuilder(module) {
                 }
 
                 if (prop === 'jsx') {
-                    const compiled = require('@babel/core').transform(typeCode, {
-                        plugins: ['@babel/plugin-transform-react-jsx']
-                    });
-                    typeCode = compiled.code;
+
                 }
 
                 code += typeCode;

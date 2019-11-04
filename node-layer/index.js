@@ -1,39 +1,40 @@
+/**
+ * Builder bundles for client files.
+ *
+ * @author Julio Rodriguez
+ * @github: https://www.github.com/jr0driguez
+ * @email: jrodriguez@jidadesarrollos.com
+ *
+ */
 (async () => {
     'use strict';
 
+    const helpers = require('./core/helpers');
     const path = require('path');
     const appPath = `..${path.sep}Aplicacion`;
     const basePath = `..${path.sep}`;
 
     const chokidar = require('chokidar');
-
-    const reader = new (require('./core/reader'))();
-    const builder = new (require('./core/builder/module'))();
-
-    const fs = require('./core/helpers').fs;
-
     const Modules = require('./core/modules');
     const modules = new Modules(appPath, basePath);
 
-    // if (modules.entries.length) {
-    //     modules.load();
-    // }
-    //const moduleJson = await fs.readFile(file, {'encoding': 'utf8'});
+    let config = helpers.getJSON('./config.json');
+    if (typeof config[config.env] !== 'undefined') {
+        config = Object.assign(config, config[config.env]);
+    }
 
-    // const outputPath = '../htdocs/dist/js/jida.bundle.js';
-    // const module = reader.getJson(moduleJson);
-    // const load = async () => builder.loadModule(module, path.resolve(file), outputPath);
-    //
-    // await load();
-    //
+    Object.defineProperty(global, 'helpers', {'get': () => helpers});
+    Object.defineProperty(global, 'CONFIG', {'get': () => config});
+
     const watcher = chokidar.watch(
         appPath,
         {
             'ignored': /^[^\.].*$/,
-            persistent: true
+            'persistent': true
         }
     );
-    console.log('listen jida files...');
+
+    console.log('listen files...');
     watcher.on('change', async (file, v) => {
         //await load();
         const dir = path.dirname(file);

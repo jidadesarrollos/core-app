@@ -4,12 +4,11 @@ const Path = require('path');
 
 class Modules {
 
-    constructor(app, base) {
-        this._base = base;
-        this._app = app;
+    constructor(app) {
         this._entries = new Map();
         this._directories = new Map();
         this.find(app);
+
     }
 
     get directories() {
@@ -20,7 +19,7 @@ class Modules {
         return this._entries;
     }
 
-    find(dir) {
+    async find(dir) {
 
         const entries = fs.readdirSync(dir);
 
@@ -50,6 +49,22 @@ class Modules {
             this._entries.set(`${dir}`, module);
 
         });
+
+        return true;
+    }
+
+    async load() {
+        try {
+            await this._entries.forEach(async (module, path) => {
+                console.log(1, module);
+                let resp = await module.load();
+                console.log(`compiled module: ${path}`, resp);
+            });
+            return true;
+        }
+        catch (e) {
+            throw new Error('The module is not valid');
+        }
 
     }
 
