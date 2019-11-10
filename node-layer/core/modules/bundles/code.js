@@ -44,7 +44,7 @@ class Code {
             }
 
             fs.writeFile(output, code);
-            
+
             if (CONFIG.compress) {
                 let data = await minify(output);
                 fs.writeFile(output, data);

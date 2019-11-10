@@ -1,6 +1,4 @@
 const Path = require('path');
-const helpers = global.helpers;
-const processors = ['jsx', 'js'];
 
 class Builder {
 
@@ -11,7 +9,15 @@ class Builder {
         let jumps = '';
         for (let step in path) jumps += '../';
         // todo: validate bundle types.
-        const bundleManager = new (require('./bundles/code'))(jumps);
+        let bundle = 'code';
+
+        if (module.bundle) {
+            bundle = module.bundle;
+            delete module.bundle;
+        }
+
+        const bundleManager = new (require('./bundles/dep'))(jumps);
+        return;
         await bundleManager.process(module, location, output);
 
     }
