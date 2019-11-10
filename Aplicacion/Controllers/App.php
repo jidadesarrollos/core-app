@@ -10,6 +10,8 @@ namespace App\Controllers;
 use Jida\Core\Controlador\Control;
 use App\Config\Configuracion;
 use Jida\Manager\Estructura;
+use Jida\Medios\Debug;
+use Jida\Modulos\Usuarios\Modelos\Usuario;
 
 class App extends Control {
 
@@ -19,9 +21,13 @@ class App extends Control {
 
         $this->layout('principal');
 
+        $collection = new Usuario();
+        $data = $collection->consulta()->obt();
+
         $this->data([
             'nombreApp' => Configuracion::NOMBRE_APP,
-            'urlBase'   => Estructura::$urlBase
+            'urlBase'   => Estructura::$urlBase,
+            'usuarios'  => $data
         ]);
 
     }
