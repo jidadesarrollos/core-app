@@ -16,8 +16,8 @@ class Builder {
             delete module.bundle;
         }
 
-        const bundleManager = new (require('./bundles/dep'))(jumps);
-        return;
+        const bundleManager = new (require('./bundles/code'))(jumps);
+
         await bundleManager.process(module, location, output);
 
     }
