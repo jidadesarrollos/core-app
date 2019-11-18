@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container">
-    <?= $contenido ?>
+    <?= $this->contenido() ?>
 </div>
 </body>
 </html>
