@@ -25,7 +25,7 @@
 
     Object.defineProperty(global, 'helpers', {'get': () => helpers});
     Object.defineProperty(global, 'CONFIG', {'get': () => config});
-
+    console.log(1, appPath);
     const watcher = chokidar.watch(
         appPath,
         {
