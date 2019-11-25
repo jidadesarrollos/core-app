@@ -27,6 +27,7 @@
     "babel-loader": "^8.0.6",
     "chokidar": "^3.2.2",
     "generate-source-map": "0.0.5",
+    "jida-frontend-compiler": "0.0.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.9.0"
