@@ -1,0 +1,28 @@
+{
+  "nombre": "Gestion Empresas",
+  "query": "select id_empresa, empresa, identificador from m_empresas",
+  "identificador": "GestionEmpresas",
+  "estructura": "1x2",
+  "clave_primaria": "id_empresa",
+  "campos": {
+    "id_empresa": {
+      "label": "id_empresa",
+      "name": "id_empresa",
+      "orden": 1,
+      "id": "id_empresa",
+      "type": "hidden"
+    },
+    "empresa": {
+      "label": "Empresa",
+      "name": "empresa",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Debe ingresar el nombre de la Empresa"
+        }
+      },
+      "orden": 2,
+      "id": "empresa",
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "selectorMenu": "div",
+  "selectorItem": "div",
+  "class": "ide-content-wrap",
+  "itemAttrs": {
+    "class": "rtl-ps-none",
+    "data-perfect-scrollbar": "",
+    "data-suppress-scroll-x": "true"
+  },
+  "items": {
+    "Menu": {
+      "id": "sidebar-menu",
+      "class": "sidebar-left open",
+      "submenu": {
+        "class": "navigation-left",
+        "itemAttrs": {
+          "class": "nav-item"
+        },
+        "items": {
+          "actividades": {
+            "id": "administracion",
+            "label": "<i class=\"fa fa-star\"></i> <span class='nav-text'>Actividades</span>",
+            "url": "/jadmin/actividades/",
+            "encode_html": false,
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>"
+          },
+          "misactividades": {
+            "id": "actividades",
+            "label": "<i class='fa fa-star'></i> <span class='nav-text'>Mis actividades</span>",
+            "url": "/jadmin/actividades/misActividades",
+            "encode_html": false,
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>"
+
+          },
+          "centrocostos": {
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>",
+            "id": "centrocostos",
+            "label": "<i class=\"fa fa-database\"></i> <span class='nav-text'>Centros de Costos</span>",
+            "url": "/jadmin/centros-costos/",
+            "encode_html": false
+          },
+          "ajustes": {
+            "attrs": {
+              "data-item": "ajustes"
+            },
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>",
+            "id": "ajustes",
+            "class": "li-parent",
+            "label": "<i class=\"fa fa-cog\"></i> <span class='nav-text'>Ajustes</span>",
+            "url": "#",
+            "encode_html": false
+          }
+        }
+      }
+    },
+    "SubMenu": {
+      "id": "sidebar-submenu",
+      "class": "sidebar-left-secondary",
+      "submenu": {
+        "selectorMenu": "div",
+        "selectorItem": "div",
+        "items": {
+          "ajustes": {
+            "submenu": {
+              "class": "childNav",
+              "attrs": {
+                "data-parent": "ajustes"
+              },
+              "itemAttrs": {
+                "class": "nav-item"
+              },
+              "items": {
+                "usuarios": {
+                  "id": "usuarios",
+                  "label": "Usuarios",
+                  "url": "/jadmin/usuarios"
+                },
+                "empresas": {
+                  "id": "empresas",
+                  "label": "Empresas",
+                  "url": "/jadmin/empresas"
+                },
+                "cargos": {
+                  "id": "cargos",
+                  "label": "Cargos",
+                  "url": "/jadmin/cargos"
+                },
+                "departamentos": {
+                  "id": "departamentos",
+                  "label": "Departamentos",
+                  "url": "/jadmin/departamentos"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

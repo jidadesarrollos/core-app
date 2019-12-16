@@ -1,0 +1,54 @@
+{
+  "nombre": "Gestion Centros de Costos",
+  "query": "select id_centro_costo, centro_costo, id_empresa, id_estatus from m_centros_costos",
+  "identificador": "GestionCentrosCostos",
+  "estructura": "",
+  "clave_primaria": "id_centro_costo",
+  "campos": {
+    "id_centro_costo": {
+      "label": "id_centro_costo",
+      "name": "id_centro_costo",
+      "orden": 1,
+      "id": "id_centro_costo",
+      "type": "hidden"
+    },
+    "id_empresa": {
+      "label": "Empresa",
+      "name": "id_empresa",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione;select id_empresa, empresa from m_empresas ORDER BY empresa ASC",
+      "orden": 2,
+      "id": "id_empresa",
+      "type": "select"
+    },
+    "centro_costo": {
+      "label": "Centro de costo",
+      "name": "centro_costo",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 3,
+      "id": "centro_costo",
+      "type": "text"
+    },
+    "id_estatus": {
+      "label": "Estatus",
+      "name": "id_estatus",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione;select id_estatus, estatus from s_estatus where id_estatus in(1,2)",
+      "orden": 4,
+      "id": "id_estatus",
+      "type": "select"
+    }
+  }
+}

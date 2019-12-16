@@ -1,0 +1,135 @@
+{
+  "nombre": "Gestion Usuarios",
+  "query": "select id_usuario, usuario, clave, nombres, apellidos, correo, id_cargo, id_departamento, id_empresa, tipo_usuario, id_estatus from s_usuarios",
+  "identificador": "GestionUsuarios",
+  "estructura": "1;2x5",
+  "clave_primaria": "id_usuario",
+  "campos": {
+    "id_usuario": {
+      "label": "id_usuario",
+      "name": "id_usuario",
+      "orden": 1,
+      "id": "id_usuario",
+      "type": "hidden"
+    },
+    "nombre_usuario": {
+      "label": "Nombre de usuario",
+      "name": "usuario",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 2,
+      "id": "usuario",
+      "type": "text"
+    },
+    "correo": {
+      "label": "Email",
+      "name": "correo",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        },
+        "email": {
+          "mensaje": "Debe ingresar un email válido"
+        }
+      },
+      "orden": 3,
+      "id": "correo",
+      "type": "text"
+    },
+    "nombres": {
+      "label": "Nombres",
+      "name": "nombres",
+      "orden": 4,
+      "id": "nombres",
+      "type": "text"
+    },
+    "apellidos": {
+      "label": "Apellidos",
+      "name": "apellidos",
+      "orden": 5,
+      "id": "apellidos",
+      "type": "text"
+    },
+    "tipo_usuario": {
+      "label": "Tipo de usuario",
+      "name": "tipo_usuario",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione;1=Empleado;2=Aliado",
+      "orden": 6,
+      "id": "tipo_usuario",
+      "type": "select"
+    },
+    "id_empresa": {
+      "label": "Empresa",
+      "name": "id_empresa",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione Empresa; select id_empresa, empresa from m_empresas",
+      "orden": 7,
+      "id": "id_empresa",
+      "type": "select"
+    },
+    "id_cargo": {
+      "label": "Cargo",
+      "name": "id_cargo",
+      "eventos": {
+        "obligatorio": {
+          "condicional": "tipo_usuario",
+          "condicion": "1",
+          "tipo": "select",
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione Cargo;select id_cargo, cargo from m_cargos ORDER BY cargo ASC",
+      "orden": 8,
+      "id": "id_cargo",
+      "type": "select"
+    },
+    "id_departamento": {
+      "label": "Departamento",
+      "name": "id_departamento",
+      "eventos": {
+        "obligatorio": {
+          "condicional": "tipo_usuario",
+          "condicion": "1",
+          "tipo": "select",
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione Departamento; select id_departamento, departamento from m_departamentos ORDER BY departamento ASC",
+      "orden": 9,
+      "id": "id_departamento",
+      "type": "select"
+    },
+    "estatus": {
+      "label": "Estatus",
+      "name": "id_estatus",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "El campo Estatus es obligatorio"
+        }
+      },
+      "opciones": "Select id_estatus,estatus from s_estatus where id_estatus!=3 and id_estatus!=4 order by id_estatus",
+      "orden": 10,
+      "id": "id_estatus",
+      "type": "radio"
+    },
+    "clave_usuario": {
+      "label": "Clave de usuario",
+      "name": "clave",
+      "orden": 11,
+      "id": "clave_usuario",
+      "type": "hidden"
+    }
+  }
+}

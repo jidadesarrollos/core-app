@@ -1,0 +1,41 @@
+{
+  "selectorMenu": "div",
+  "selectorItem": "div",
+  "class": "ide-content-wrap",
+  "itemAttrs": {
+    "class": "rtl-ps-none",
+    "data-perfect-scrollbar": "",
+    "data-suppress-scroll-x": "true"
+  },
+  "items": {
+    "Menu": {
+      "class": "sidebar-left open",
+      "submenu": {
+        "class": "navigation-left",
+        "itemAttrs": {
+          "class": "nav-item"
+        },
+        "items": {
+          "actividades": {
+            "id": "actividades",
+            "label": "<i class='fa fa-star'></i> <span class='nav-text'>Actividades</span>",
+            "url": "/jadmin/actividades/",
+            "encode_html": false,
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>"
+
+          },
+          "misactividades": {
+            "id": "actividades",
+            "label": "<i class='fa fa-star'></i> <span class='nav-text'>Mis actividades</span>",
+            "url": "/jadmin/actividades/misActividades",
+            "encode_html": false,
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>"
+
+          }
+        }
+      }
+    }
+  }
+}

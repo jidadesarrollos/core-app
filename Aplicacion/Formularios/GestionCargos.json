@@ -1,0 +1,28 @@
+{
+  "nombre": "Gestion Cargos",
+  "query": "select id_cargo, cargo, identificador from m_cargos",
+  "identificador": "GestionCargos",
+  "estructura": "",
+  "clave_primaria": "id_cargo",
+  "campos": {
+    "id_cargo": {
+      "label": "id_cargo",
+      "name": "id_cargo",
+      "orden": 1,
+      "id": "id_cargo",
+      "type": "hidden"
+    },
+    "cargo": {
+      "label": "Cargo",
+      "name": "cargo",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 2,
+      "id": "cargo",
+      "type": "text"
+    }
+  }
+}

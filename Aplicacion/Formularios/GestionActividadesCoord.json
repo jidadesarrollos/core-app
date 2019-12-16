@@ -1,0 +1,97 @@
+{
+  "nombre": "Gestion Actividades",
+  "query": "select id_actividad, id_empresa, id_centro_costo, id_subcentro_costo, id_usuario, DATE(fecha_inicio) as fecha_inicio, DATE(fecha_entrega) as fecha_entrega, horas, descripcion from t_actividades",
+  "identificador": "GestionActividades",
+  "estructura": "1x2;2;3;1x2",
+  "clave_primaria": "id_actividad",
+  "campos": {
+    "id_actividad": {
+      "label": "id_actividad",
+      "name": "id_actividad",
+      "orden": 1,
+      "id": "id_actividad",
+      "type": "hidden"
+    },
+    "id_empresa": {
+      "label": "Empresa",
+      "name": "id_empresa",
+      "orden": 2,
+      "id": "id_empresa",
+      "type": "hidden"
+    },
+    "id_centro_costo": {
+      "label": "Centro de costos",
+      "name": "id_centro_costo",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione",
+      "orden": 3,
+      "id": "id_centro_costo",
+      "type": "select"
+    },
+    "id_subcentro_costo": {
+      "label": "Subcentro de costos",
+      "name": "id_subcentro_costo",
+      "opciones": "=Seleccione",
+      "orden": 4,
+      "id": "id_subcentro_costo",
+      "type": "select"
+    },
+    "fecha_inicio": {
+      "label": "Fecha de inicio",
+      "name": "fecha_inicio",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 5,
+      "id": "fecha_inicio",
+      "type": "date"
+    },
+    "fecha_entrega": {
+      "label": "Fecha de entrega",
+      "name": "fecha_entrega",
+      "orden": 6,
+      "id": "fecha_entrega",
+      "type": "date"
+    },
+    "horas": {
+      "label": "Horas",
+      "name": "horas",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        },
+        "decimal": {
+          "mensaje": "Este campo es para valores numericos decimales."
+        }
+      },
+      "orden": 7,
+      "id": "horas",
+      "type": "number"
+    },
+    "descripcion": {
+      "label": "Descripción",
+      "name": "descripcion",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 8,
+      "id": "descripcion",
+      "type": "textarea"
+    },
+    "id_usuario": {
+      "label": "id_usuario",
+      "name": "id_usuario",
+      "orden": 9,
+      "id": "id_usuario",
+      "type": "hidden"
+    }
+  }
+}

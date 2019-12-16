@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Clase Modelo
  *
@@ -9,8 +10,6 @@
  */
 
 namespace App\Config;
-
-use Jida\Configuracion\Config;
 
 class Mail {
 
@@ -23,19 +22,11 @@ class Mail {
         'Port'       => 465,
         'SMTPSecure' => 'ssl'
     ];
-
     var $data = [
-        'url_sitio'            => Configuracion::URL_ABSOLUTA,
-        'url_app'              => Configuracion::URL_ABSOLUTA,
-        'logo_app'             => Configuracion::URL_ABSOLUTA . 'htdocs/img/logo.png',
-        'url_app_fb'           => URL_FACEBOOK,
-        'url_app_twitter'      => URL_TWITTER,
-        'url_imagenes'         => URL_IMAGENES,
-        'url_media_app'        => URL_MEDIA_CORREOS,
-        'url_app_instagram'    => URL_INSTAGRAM,
-        'cuenta_twitter_app'   => CUENTA_TWITTER,
-        'cuenta_instagram_app' => CUENTA_INSTAGRAM,
-        'nombre_app'           => TITULO_SISTEMA
+        'nombre_app' => Configuracion::NOMBRE_APP,
+        'url_sitio'  => Configuracion::URL_BASE,
+        'url_app'    => Configuracion::URL_BASE,
+        'logo_app'   => 'http://jidadesarrollos.com/htdocs/img/jida/jida_solid.png'
     ];
 
 }

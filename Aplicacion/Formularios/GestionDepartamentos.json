@@ -1,0 +1,41 @@
+{
+  "nombre": "Gestion Departamentos",
+  "query": "select id_departamento, departamento, id_usuario from m_departamentos",
+  "identificador": "GestionDepartamentos",
+  "estructura": "",
+  "clave_primaria": "id_departamento",
+  "campos": {
+    "id_departamento": {
+      "label": "id_departamento",
+      "name": "id_departamento",
+      "orden": 1,
+      "id": "id_departamento",
+      "type": "hidden"
+    },
+    "departamento": {
+      "label": "Departamento",
+      "name": "departamento",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 2,
+      "id": "departamento",
+      "type": "text"
+    },
+    "id_usuario": {
+      "label": "Encargado",
+      "name": "id_usuario",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione;select s_usuarios.id_usuario, concat(s_usuarios.nombres, ' ', s_usuarios.apellidos) as nombre from s_usuarios where tipo_usuario = 1 ORDER BY nombre ASC",
+      "orden": 3,
+      "id": "id_usuario",
+      "type": "select"
+    }
+  }
+}

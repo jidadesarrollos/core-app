@@ -1,0 +1,48 @@
+{
+  "nombre": "Gestion SubCentros de Costos",
+  "query": "select id_subcentro_costo, subcentro_costo, id_centro_costo, id_estatus from m_subcentros_costos",
+  "identificador": "GestionSubCentrosCostos",
+  "estructura": "",
+  "clave_primaria": "id_subcentro_costo",
+  "campos": {
+    "id_subcentro_costo": {
+      "label": "id_subcentro_costo",
+      "name": "id_subcentro_costo",
+      "orden": 1,
+      "id": "id_subcentro_costo",
+      "type": "hidden"
+    },
+    "subcentro_costo": {
+      "label": "SubCentro de costo",
+      "name": "subcentro_costo",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "orden": 2,
+      "id": "centro_costo",
+      "type": "text"
+    },
+    "id_estatus": {
+      "label": "Estatus",
+      "name": "id_estatus",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "opciones": "=Seleccione;select id_estatus, estatus from s_estatus where id_estatus in(1,2)",
+      "orden": 3,
+      "id": "id_estatus",
+      "type": "select"
+    },
+    "id_centro_costo": {
+      "label": "id_centro_costo",
+      "name": "id_centro_costo",
+      "orden": 4,
+      "id": "id_centro_costo",
+      "type": "hidden"
+    }
+  }
+}

@@ -6,27 +6,28 @@ use Jida\Configuracion\Config;
 
 class Configuracion extends Config {
 
-    const NOMBRE_APP = 'Aplicación Jida';
+    const NOMBRE_APP = 'Cost Center';
     const ENTORNO_APP = 'dev';
     const URL_BASE = '';
     const URL_ABSOLUTA = '';
-    const PATH_JIDA = 'jida';
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
-    const HASH_CLAVE = 'md5'; // opciones: password_hash, md5
-    const MULTIIDIOMA = true;
+    const HASH_CLAVE = "md5"; // opciones: password_hash, md5
 
     public $tema = 'default';
 
     public $idiomas = [
-        'es' => 'Español',
-        'en' => 'Inglés'
+        'es' => 'Español'
     ];
 
     static $modulos = [
+        'Jadmin',
+        'Empresas',
+        'SpreadSheet'
     ];
 
-    public $logo = 'default/htdocs/img/logo.png';
+    public $logo = '/htdocs/img/logo.png';
+
     public $mensajes = [
         'error'  => 'alert alert-danger',
         'suceso' => 'alert alert-success',
@@ -42,14 +43,8 @@ class Configuracion extends Config {
     ];
 
     function __construct() {
-
         $this->definir('configMensajes', $this->mensajes);
-        $this->definir('tema',
-            [
-                'configuracion' => $this->tema
-            ]);
-
-        self::$modulos['app'] = 'app';
+        $this->definir('tema', ['configuracion' => $this->tema]);
 
         /**
          * @since 0.6
@@ -58,7 +53,6 @@ class Configuracion extends Config {
     }
 
     private function definir($variable, $valor) {
-
         $GLOBALS[$variable] = $valor;
     }
 

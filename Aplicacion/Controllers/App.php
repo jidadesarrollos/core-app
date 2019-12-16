@@ -1,34 +1,21 @@
 <?php
-/**
- * Controlador Padre
- * aqui va toda la logica en comun que necesiten
- *  los controladores que extienden de el
- */
 
 namespace App\Controllers;
 
-use Jida\Core\Controlador\Control;
 use App\Config\Configuracion;
-use Jida\Manager\Estructura;
-use Jida\Medios\Debug;
-use Jida\Modulos\Usuarios\Modelos\Usuario;
+use Jida\Core\Controlador\Control;
 
 class App extends Control {
+
+    protected $Layout = '';
 
     function __construct() {
 
         parent::__construct();
 
-        $this->layout('principal');
+        $this->data('title', Configuracion::NOMBRE_APP);
 
-        $collection = new Usuario();
-        $data = $collection->consulta()->obt();
-
-        $this->data([
-            'nombreApp' => Configuracion::NOMBRE_APP,
-            'urlBase'   => Estructura::$urlBase,
-            'usuarios'  => $data
-        ]);
+        //   $this->redireccionar('/jadmin');
 
     }
 
