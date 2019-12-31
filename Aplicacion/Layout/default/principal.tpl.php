@@ -12,7 +12,7 @@
 <body>
 <div class="container">
     <?= $this->incluir('elementos/header') ?>
-    <?= $contenido ?>
+    <?= $this->contenido ?>
     <?= $this->incluir('elementos/footer') ?>
 </div>
 <?= $this->imprimirLibrerias('js', 'default'); ?>
