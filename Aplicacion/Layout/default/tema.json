@@ -7,27 +7,10 @@
   "dev": {
     "css": {
       "principal": {
-        "bootstrap": "{tema}/htdocs/css/bootstrap.min.css",
-        "main": "{tema}/htdocs/css/main.css"
       }
     },
     "js": {
       "principal": {
-        "jq": "{tema}/htdocs/js/vendor/jquery-3.3.1.min.js",
-        "bt": "{tema}/htdocs/js/vendor/bootstrap.bundle.min.js",
-        "dataTable": "{tema}/htdocs/js/jquery.dataTables.min.js",
-        "dataTable-bt": "{tema}/htdocs/js/dataTables.bootstrap4.min.js",
-        "dataTable-lenguajes": "{base}/htdocs/js/libs/datatable-language.js",
-        "bootbox": "{tema}/htdocs/js/bootbox.min.js",
-        "scroll": "{tema}/htdocs/js/vendor/perfect-scrollbar.min.js",
-        "script": "{tema}/htdocs/js/script.js",
-        "sidebar": "{tema}/htdocs/js/sidebar.large.script.js",
-        "mustache": "{tema}/htdocs/js/mustache.min.js",
-        "moment": "{tema}/htdocs/js/vendor/calendar/moment.min.js",
-        "font-awesome": "{tema}/htdocs/js/all.min.js",
-        "bt-datepicker": "{base}/htdocs/bower_components/datepicker/js/bootstrap-datepicker.js",
-        "scripts": "{base}/htdocs/js/scripts.js",
-        "jadmin": "{base}/htdocs/js/jadmin.js"
       }
     }
   },
