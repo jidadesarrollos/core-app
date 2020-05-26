@@ -12,12 +12,16 @@ class Suscripcion extends Gateway {
         return $this->gateway->subscription()->create($params);
     }
 
-    public function editar($idSuscripcion, $params) {
-        return $this->gateway->subscription()->update($idSuscripcion, $params);
+    public function buscar($id) {
+        return $this->gateway->subscription()->find($id);
     }
 
-    public function cancelar($idSuscripcion) {
-        return $this->gateway->subscription()->cancel($idSuscripcion);
+    public function editar($id, $params) {
+        return $this->gateway->subscription()->update($id, $params);
+    }
+
+    public function cancelar($id) {
+        return $this->gateway->subscription()->cancel($id);
     }
 
 }
