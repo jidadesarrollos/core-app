@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/Jadmin" isTestSource="false" packagePrefix="Jadmin\" />
       <excludeFolder url="file://$MODULE_DIR$/basura" />
       <excludeFolder url="file://$MODULE_DIR$/trash" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/braintree/braintree_php" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
     </content>
     <orderEntry type="inheritedJdk" />

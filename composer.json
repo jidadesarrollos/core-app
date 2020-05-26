@@ -12,7 +12,7 @@
       "name": "jrodriguez",
       "email": "jrodriguez@jidadesarrollos.com"
     }
-  ], 
+  ],
   "autoload": {
     "psr-4": {
       "App\\": [
@@ -30,7 +30,6 @@
     }
   },
   "require": {
-    "jida/render": "dev-master",
-    "ext-json": "*"
+    "braintree/braintree_php": "^4.4"
   }
 }

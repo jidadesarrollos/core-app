@@ -21,6 +21,14 @@ class Configuracion extends Config {
         'es' => 'Español'
     ];
 
+    // Braintree
+    const BRAINTREE_CONFIG = [
+        'environment' => 'sandbox',
+        'merchantId'  => 'jjyy8qvqf2dysdqb',
+        'publicKey'   => '3ftnz9cvfc83sc9p',
+        'privateKey'  => 'a400c02f66d6fb8dc8cb07d503bda1cd'
+    ];
+
     static $modulos = [
         'Jadmin',
         'Empresas',

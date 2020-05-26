@@ -2,27 +2,30 @@
   "link": {
     "shortcut icon": "{base}/htdocs/img/logo.png"
   },
-  "layout": "jadmin",
+  "layout": "default",
   "layoutError": "error",
   "dev": {
     "css": {
-      "principal": {
+      "default": {
+        "main": "{tema}/htdocs/css/dist/main.css"
       }
     },
     "js": {
-      "principal": {
+      "default": {
+        "jquery": "{base}/node_modules/jquery/dist/jquery.min.js",
+        "bootstrap": "{base}/node_modules/bootstrap/dist/js/bootstrap.min.js"
       }
     }
   },
   "prod": {
     "css": {
-      "principal": {
-        "tema": "{tema}/htdocs/css/principal.bundle.css"
+      "default": {
+        "main": "{tema}/htdocs/css/styles.min.css"
       }
     },
     "js": {
-      "principal": {
-        "tema": "{tema}/htdocs/js/principal.bundle.js"
+      "default": {
+        "main": "{tema}/htdocs/js/jd.bundle.js"
       }
     }
   }
