@@ -32,7 +32,8 @@ class Configuracion extends Config {
     static $modulos = [
         'Jadmin',
         'Empresas',
-        'SpreadSheet'
+        'SpreadSheet',
+        'Braintree'
     ];
 
     public $logo = '/htdocs/img/logo.png';
