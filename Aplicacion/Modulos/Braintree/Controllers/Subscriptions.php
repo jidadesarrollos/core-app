@@ -67,7 +67,7 @@ class Subscriptions extends Braintree {
             if ($result->success) {
                 $modelo = new Subscription();
                 $modelo->salvar([
-                    'payment_method_nonce' => $this->post('nonce'),
+                    'payment_method_token' => $this->post('payment_method_token'),
                     'id_customer'          => $idCustomer
                 ]);
 
