@@ -28,51 +28,52 @@ CREATE TABLE IF NOT EXISTS `bt_customers` (
   `time_created` datetime DEFAULT NULL,
   `time_updated` datetime DEFAULT NULL,
   PRIMARY KEY (`id_customer`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla core_app.bt_customers: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `bt_customers` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bt_customers` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla core_app.bt_payment_methods
 DROP TABLE IF EXISTS `bt_payment_methods`;
 CREATE TABLE IF NOT EXISTS `bt_payment_methods` (
   `id_payment_method` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
   `payment_method_nonce` text,
-  `id_customer` int(11) DEFAULT NULL,
   `creator_user_id` int(11) DEFAULT NULL,
   `modifier_user_id` int(11) DEFAULT NULL,
   `time_created` datetime DEFAULT NULL,
   `time_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_payment_method`)
+  PRIMARY KEY (`id_payment_method`),
+  KEY `FK_bt_payment_methods_bt_customers` (`customer_id`),
+  CONSTRAINT `FK_bt_payment_methods_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla core_app.bt_payment_methods: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `bt_payment_methods` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bt_payment_methods` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla core_app.bt_subscriptions
 DROP TABLE IF EXISTS `bt_subscriptions`;
 CREATE TABLE IF NOT EXISTS `bt_subscriptions` (
   `id_subscription` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
   `payment_method_token` text,
   `plan_id` varchar(100) DEFAULT NULL,
+  `price` decimal(10,2) DEFAULT NULL,
   `bt_subscription_id` varchar(100) DEFAULT NULL,
   `creator_user_id` int(11) DEFAULT NULL,
   `modifier_user_id` int(11) DEFAULT NULL,
   `time_created` datetime DEFAULT NULL,
   `time_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_subscription`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_subscription`),
+  KEY `FK_bt_subscriptions_bt_customers` (`customer_id`),
+  CONSTRAINT `FK_bt_subscriptions_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla core_app.bt_subscriptions: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `bt_subscriptions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bt_subscriptions` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 -- Volcando estructura para tabla core_app.bt_transactions
 DROP TABLE IF EXISTS `bt_transactions`;
 CREATE TABLE IF NOT EXISTS `bt_transactions` (
   `id_transaction` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
   `amount` decimal(10,2) DEFAULT NULL,
   `id_payment_method` int(11) DEFAULT NULL,
   `bt_transaction_id` varchar(100) DEFAULT NULL,
@@ -80,12 +81,12 @@ CREATE TABLE IF NOT EXISTS `bt_transactions` (
   `modifier_user_id` int(11) DEFAULT NULL,
   `time_created` datetime DEFAULT NULL,
   `time_updated` datetime DEFAULT NULL,
-  PRIMARY KEY (`id_transaction`)
+  PRIMARY KEY (`id_transaction`),
+  KEY `FK_bt_transactions_bt_customers` (`customer_id`),
+  CONSTRAINT `FK_bt_transactions_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla core_app.bt_transactions: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `bt_transactions` DISABLE KEYS */;
-/*!40000 ALTER TABLE `bt_transactions` ENABLE KEYS */;
+-- La exportación de datos fue deseleccionada.
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
