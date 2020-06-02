@@ -23,7 +23,6 @@
             "encode_html": false,
             "a-class": "nav-item-hold",
             "postHtml": "<div class=\"triangle\"></div>"
-
           },
           "misactividades": {
             "id": "actividades",
@@ -32,7 +31,14 @@
             "encode_html": false,
             "a-class": "nav-item-hold",
             "postHtml": "<div class=\"triangle\"></div>"
-
+          },
+          "customers": {
+            "id": "customers",
+            "label": "<i class='fa fa-star'></i> <span class='nav-text'>Braintree</span>",
+            "url": "/jadmin/customers/",
+            "encode_html": false,
+            "a-class": "nav-item-hold",
+            "postHtml": "<div class=\"triangle\"></div>"
           }
         }
       }

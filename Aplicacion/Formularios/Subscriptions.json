@@ -1,0 +1,61 @@
+{
+  "nombre": "Subscriptions",
+  "query": "select id_subscription, customer_id, payment_method_token, plan_id, price, bt_subscription_id from bt_subscriptions",
+  "identificador": "Subscriptions",
+  "estructura": "",
+  "clave_primaria": "id_subscription",
+  "campos": {
+    "id_subscription": {
+      "id": "id_subscription",
+      "name": "id_subscription",
+      "type": "hidden"
+    },
+    "customer_id": {
+      "id": "customer_id",
+      "name": "customer_id",
+      "type": "hidden"
+    },
+    "payment_method_token": {
+      "label": "Metodo de pago",
+      "name": "payment_method_token",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "payment_method_token",
+      "type": "text"
+    },
+    "plan_id": {
+      "label": "Plan",
+      "name": "plan_id",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "plan_id",
+      "type": "text"
+    },
+    "price": {
+      "label": "Precio",
+      "name": "price",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        },
+        "numerico": {
+          "mensaje": "Debe ingresar solo numeros"
+        }
+      },
+      "id": "price",
+      "type": "text"
+    },
+    "bt_subscription_id": {
+      "label": "ID Suscripcion",
+      "name": "bt_subscription_id",
+      "id": "bt_subscription_id",
+      "type": "text"
+    }
+  }
+}

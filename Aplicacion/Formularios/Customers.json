@@ -1,0 +1,100 @@
+{
+  "nombre": "Customers",
+  "query": "select id_customer, first_name, last_name, company, email, phone, fax, website, bt_customer_id from bt_customers",
+  "identificador": "Customers",
+  "estructura": "1;2x4",
+  "clave_primaria": "id_customer",
+  "campos": {
+    "id_customer": {
+      "id": "id_customer",
+      "name": "id_customer",
+      "type": "hidden"
+    },
+    "first_name": {
+      "label": "Nombres",
+      "name": "first_name",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "first_name",
+      "type": "text"
+    },
+    "last_name": {
+      "label": "Apellidos",
+      "name": "last_name",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "last_name",
+      "type": "text"
+    },
+    "company": {
+      "label": "Empresa",
+      "name": "company",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "company",
+      "type": "text"
+    },
+    "email": {
+      "label": "Email",
+      "name": "email",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        },
+        "email": {
+          "mensaje": "Debe ingresar un email valido"
+        }
+      },
+      "id": "email",
+      "type": "email"
+    },
+    "phone": {
+      "label": "Telefono",
+      "name": "phone",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "phone",
+      "type": "text"
+    },
+    "fax": {
+      "label": "Fax",
+      "name": "fax",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "fax",
+      "type": "text"
+    },
+    "website": {
+      "label": "Sitio web",
+      "name": "website",
+      "eventos": {
+        "obligatorio": {
+          "mensaje": "Este campo es obligatorio"
+        }
+      },
+      "id": "website",
+      "type": "text"
+    },
+    "bt_customer_id": {
+      "label": "ID Braintree",
+      "name": "bt_customer_id",
+      "id": "bt_customer_id",
+      "type": "text"
+    }
+  }
+}

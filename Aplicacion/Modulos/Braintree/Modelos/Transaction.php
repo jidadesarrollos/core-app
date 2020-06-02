@@ -2,13 +2,15 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
-class Transaction extends Braintree {
+use Jida\BD\DataModel;
+
+class Transaction extends DataModel {
 
     public $id_transaction;
+    public $customer_id;
     public $amount;
     public $id_payment_method;
     public $bt_transaction_id;
-    public $id_customer;
     public $creator_user_id;
     public $modifier_user_id;
     public $time_created;
@@ -16,13 +18,5 @@ class Transaction extends Braintree {
 
     protected $tablaBD = "bt_transactions";
     protected $pk = "id_transaction";
-
-    public function __construct() {
-        parent::__construct();
-    }
-
-    public function sale($params) {
-        return $this->gateway->transaction()->sale($params);
-    }
 
 }
