@@ -30,6 +30,6 @@
     }
   },
   "require": {
-    "braintree/braintree_php": "^4.4"
+    "braintree/braintree_php" : "5.1.0"
   }
 }
