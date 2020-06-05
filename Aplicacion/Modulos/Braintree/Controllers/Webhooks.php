@@ -4,6 +4,7 @@ namespace App\Modulos\Braintree\Controllers;
 
 use App\Controllers\App;
 use App\Modulos\Braintree\Modelos\Webhook;
+use App\Modulos\Braintree\Modelos\Subscription;
 
 class Webhooks extends App {
 

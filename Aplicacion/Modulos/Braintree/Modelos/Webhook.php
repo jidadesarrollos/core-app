@@ -10,7 +10,7 @@ class Webhook extends DataModel {
     public static function check($bt_signature, $bt_payload)
     {
 
-        //$gateway = new \Braintree_Gateway(Configuracion::BRAINTREE_CONFIG);
+        $gateway = new \Braintree_Gateway(Configuracion::BRAINTREE_CONFIG);
 
         /*$webhookNotification = $gateway->webhookNotification()->parse(
             $bt_signature, $bt_payload
