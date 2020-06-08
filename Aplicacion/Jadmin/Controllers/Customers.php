@@ -3,6 +3,7 @@
 namespace App\Jadmin\Controllers;
 
 use App\Modulos\Braintree\Modelos\Customer;
+use Jida\Medios\Debug;
 use Jida\Medios\Mensajes;
 use JidaRender\Formulario;
 use JidaRender\JVista;
@@ -66,6 +67,7 @@ class Customers extends Jadmin {
                 $accion = (empty($id)) ? 'guardado' : 'modificado';
                 $msj = 'Registro <strong>' . $accion . '</strong> exitosamente';
                 Mensajes::almacenar(Mensajes::suceso($msj));
+
                 $this->redireccionar("/jadmin/customers");
 
             }

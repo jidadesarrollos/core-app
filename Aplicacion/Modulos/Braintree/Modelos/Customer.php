@@ -13,10 +13,6 @@ class Customer extends Braintree {
     public $fax;
     public $website;
     public $bt_customer_id;
-    public $creator_user_id;
-    public $modifier_user_id;
-    public $time_created;
-    public $time_updated;
 
     protected $tablaBD = "bt_customers";
     protected $pk = "id_customer";
