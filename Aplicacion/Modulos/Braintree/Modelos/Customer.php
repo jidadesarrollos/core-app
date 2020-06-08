@@ -2,9 +2,12 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
+use Jida\Medios\Debug;
+
 class Customer extends Braintree {
 
     public $id_customer;
+    public $id_usuario;
     public $first_name;
     public $last_name;
     public $company;
@@ -76,6 +79,11 @@ class Customer extends Braintree {
 
         return $result;
 
+    }
+
+    public function get($id, $session){
+        $field = (isset($session)) ? 'id_usuario' : 'id_customer';
+        return $this->consulta()->filtro([$field => $id])->obt();
     }
 
 }

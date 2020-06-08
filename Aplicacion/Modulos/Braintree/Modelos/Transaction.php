@@ -11,10 +11,6 @@ class Transaction extends Braintree {
     public $amount;
     public $id_payment_method;
     public $bt_transaction_id;
-    public $creator_user_id;
-    public $modifier_user_id;
-    public $time_created;
-    public $time_updated;
 
     protected $tablaBD = "bt_transactions";
     protected $pk = "id_transaction";
@@ -34,6 +30,7 @@ class Transaction extends Braintree {
         $result = $this->gateway->transaction()->sale($data);
 
         if ($result->success) {
+            $this->bt_transaction_id = $result->transaction->id;
             $this->salvar($params);
             return $result->transaction;
         } else {

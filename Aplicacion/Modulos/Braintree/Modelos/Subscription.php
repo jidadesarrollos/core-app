@@ -2,6 +2,9 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
+use App\Modulos\Braintree\Modelos\Customer;
+use Jida\Medios\Debug;
+
 class Subscription extends Braintree {
 
     public $id_subscription;
@@ -10,13 +13,14 @@ class Subscription extends Braintree {
     public $plan_id;
     public $price;
     public $bt_subscription_id;
-    public $creator_user_id;
-    public $modifier_user_id;
-    public $time_created;
-    public $time_updated;
 
     protected $tablaBD = "bt_subscriptions";
     protected $pk = "id_subscription";
+
+    public function __construct() {
+        parent::__construct();
+        //$this->_customer = new Customer();
+    }
 
     public function getAll() {
         $this->consulta(['id_subscription', 'customer_id', 'payment_method_token', 'plan_id', 'price', 'bt_subscription_id']);
@@ -33,7 +37,7 @@ class Subscription extends Braintree {
 
         $data = [
             'paymentMethodToken' => isset($params['payment_method_token']) ? $params['payment_method_token'] : "",
-            'planId'             => isset($params['plan']) ? $params['plan'] : "",
+            'planId'             => isset($params['plan_id']) ? $params['plan_id'] : "",
             'price'              => isset($params['price']) ? $params['price'] : "",
         ];
 
@@ -42,7 +46,13 @@ class Subscription extends Braintree {
         }
         else {
             $result = $this->gateway->subscription()->create($data);
-            if ($result->success) $this->bt_subscription_id = $result->subscription->id;
+            if ($result->success) {
+                $this->bt_subscription_id = $result->subscription->id;
+                $_customer = new Customer();
+                $response = $_customer->get(2, true);
+                //Debug::imprimir(['$customer',$customer], true);
+                //$this->customer_id = $result->subscription->transactions[0]->customer['id'];
+            }
         }
 
         return $this->salvar($params);

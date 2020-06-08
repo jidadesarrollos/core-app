@@ -20,7 +20,7 @@ class Subscriptions extends App {
         $params = [
             'payment_method_token'=> '966pkdb',
             'price'=> 10,
-            'plan' => 'fcqm'
+            'plan_id' => 'fcqm'
         ];
         $response = $subscription->save($params);
 

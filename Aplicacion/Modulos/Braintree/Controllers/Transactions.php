@@ -26,7 +26,6 @@ class Transactions extends App {
             'amount'=> 10
         ];
         $payment = $transaction->create($params);
-        Debug::imprimir(['transaction', $payment], true);
 
     }
 
