@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `bt_payment_methods` (
   `id_usuario_creador` int(11) DEFAULT NULL,
   `id_usuario_modificador` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
-  `fecha_modificacion` datetime DEFAULT NULL,,
+  `fecha_modificacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_payment_method`),
   KEY `FK_bt_payment_methods_bt_customers` (`customer_id`),
   CONSTRAINT `FK_bt_payment_methods_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `bt_subscriptions` (
   `id_usuario_creador` int(11) DEFAULT NULL,
   `id_usuario_modificador` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
-  `fecha_modificacion` datetime DEFAULT NULL,,
+  `fecha_modificacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_subscription`),
   KEY `FK_bt_subscriptions_bt_customers` (`customer_id`),
   CONSTRAINT `FK_bt_subscriptions_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS `bt_transactions` (
   `id_usuario_creador` int(11) DEFAULT NULL,
   `id_usuario_modificador` int(11) DEFAULT NULL,
   `fecha_creacion` datetime DEFAULT NULL,
-  `fecha_modificacion` datetime DEFAULT NULL,,
+  `fecha_modificacion` datetime DEFAULT NULL,
   PRIMARY KEY (`id_transaction`),
   KEY `FK_bt_transactions_bt_customers` (`customer_id`),
   CONSTRAINT `FK_bt_transactions_bt_customers` FOREIGN KEY (`customer_id`) REFERENCES `bt_customers` (`id_customer`) ON DELETE CASCADE ON UPDATE CASCADE

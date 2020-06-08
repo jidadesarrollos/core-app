@@ -1296,7 +1296,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`jidadesa_cost`@`%`*/ /*!50003 TRIGGER `jidadesa_cost_center`.`t_actividades_BEFORE_UPDATE` BEFORE UPDATE ON `t_actividades` FOR EACH ROW
+/*!50003 CREATE*/ /*!50017 / /*!50003 TRIGGER `t_actividades_BEFORE_UPDATE` BEFORE UPDATE ON `t_actividades` FOR EACH ROW
 BEGIN
 	DECLARE v_horas_previas FLOAT;
     DECLARE v_id_centro_costo INT;
@@ -1349,7 +1349,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`jidadesa_cost`@`%`*/ /*!50003 TRIGGER `jidadesa_cost_center`.`t_actividades_AFTER_UPDATE` AFTER UPDATE ON `t_actividades` FOR EACH ROW
+/*!50003 CREATE*/ /*!50017 / /*!50003 TRIGGER `t_actividades_AFTER_UPDATE` AFTER UPDATE ON `t_actividades` FOR EACH ROW
 BEGIN
 	DECLARE v_horas_nuevas FLOAT;
     DECLARE v_id_centro_costo INT;
