@@ -23,10 +23,10 @@ class Transactions extends App {
         $transaction = new Transaction();
         $params = [
             'payment_method_nonce'=> $client_nonce,
-            'amount'=> 10
+            'amount'=> 10,
+            'id_usuario' => 2
         ];
-        $payment = $transaction->create($params);
-
+        $transaction->create($params);
     }
 
 }

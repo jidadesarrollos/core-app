@@ -13,13 +13,13 @@ class Subscription extends Braintree {
     public $plan_id;
     public $price;
     public $bt_subscription_id;
+    public $subscription_status;
 
     protected $tablaBD = "bt_subscriptions";
     protected $pk = "id_subscription";
 
     public function __construct() {
         parent::__construct();
-        //$this->_customer = new Customer();
     }
 
     public function getAll() {
@@ -49,9 +49,9 @@ class Subscription extends Braintree {
             if ($result->success) {
                 $this->bt_subscription_id = $result->subscription->id;
                 $_customer = new Customer();
-                $response = $_customer->get(2, true);
-                //Debug::imprimir(['$customer',$customer], true);
-                //$this->customer_id = $result->subscription->transactions[0]->customer['id'];
+                $customer = $_customer->get($params['id_usuario'], true);
+                $this->customer_id = $customer[0]['id_customer'];
+                $this->subscription_status = $result->subscription->status;
             }
         }
 
@@ -74,6 +74,13 @@ class Subscription extends Braintree {
 
         return $result;
 
+    }
+
+    public function changeStatus($params){
+        $result = $this->consulta()->filtro(['bt_subscription_id' => $params['id']])->obt();
+        $_subscription = $result[0];
+        $_subscription['subscription_status'] = $params['status'];
+        return $this->salvar($_subscription);
     }
 
 }

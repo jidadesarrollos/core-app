@@ -20,10 +20,21 @@ class Subscriptions extends App {
         $params = [
             'payment_method_token'=> '966pkdb',
             'price'=> 10,
-            'plan_id' => 'fcqm'
+            'plan_id' => 'fcqm',
+            'id_usuario' => 2
         ];
-        $response = $subscription->save($params);
+        $subscription->save($params);
 
     }
+
+    function update(){
+        $subscription = new Subscription();
+        $params = [
+            'id'=> 'hhk97b',
+            'status'=> 'Canceled'
+        ];
+        $subscription->changeStatus($params);
+    }
+
 }
 
