@@ -9,17 +9,19 @@ use JidaRender\JVista;
 
 class Customers extends Jadmin {
 
+    private $model;
+
     public function __construct() {
         parent::__construct();
+        $this->model = new Customer();
     }
 
     public function index() {
 
-        $modelo = new Customer();
-        $data = $modelo->getAll();
-        $parametros = ['titulos' => ['Nombres', 'Apellidos', 'Empresa', 'Email', 'Telefono', 'Fax', 'Website', 'ID Braintree']];
+        $data = $this->model->getAll();
+        $params = ['titulos' => ['Nombres', 'Apellidos', 'Empresa', 'Email', 'Telefono', 'Fax', 'Website', 'ID Braintree']];
 
-        $vista = new JVista($data, $parametros);
+        $vista = new JVista($data, $params);
 
         $vista->accionesFila([
             [
@@ -60,7 +62,7 @@ class Customers extends Jadmin {
 
             if ($form->validar()) {
 
-                Customer::save($this->post(), $id);
+                $this->model->save($this->post(), $id);
                 $accion = (empty($id)) ? 'guardado' : 'modificado';
                 $msj = 'Registro <strong>' . $accion . '</strong> exitosamente';
                 Mensajes::almacenar(Mensajes::suceso($msj));
@@ -81,7 +83,7 @@ class Customers extends Jadmin {
 
     function eliminar($id = "") {
 
-        $msj = Customer::delete($id) ?
+        $msj = $this->model->delete($id) ?
             Mensajes::suceso('El registro ha sido eliminado correctamente') :
             Mensajes::error('El registro que desea eliminar no existe');
 

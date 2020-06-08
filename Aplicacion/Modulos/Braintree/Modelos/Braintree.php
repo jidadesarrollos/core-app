@@ -7,9 +7,15 @@ use Jida\BD\DataModel;
 
 class Braintree extends DataModel {
 
+    protected $gateway;
+
+    public function __construct() {
+        parent::__construct();
+        $this->gateway = new \Braintree\Gateway(Configuracion::BRAINTREE_CONFIG);
+    }
+
     public function token() {
-        $gateway = new \Braintree_Gateway(Configuracion::BRAINTREE_CONFIG);
-        return $gateway->clientToken()->generate();
+        return $this->gateway->clientToken()->generate();
     }
 
 }

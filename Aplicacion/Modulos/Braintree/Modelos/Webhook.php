@@ -2,16 +2,11 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
-use App\Config\Configuracion;
-use Jida\BD\DataModel;
+class Webhook extends Braintree {
 
-class Webhook extends DataModel {
+    public function parse($bt_signature, $bt_payload) {
 
-    public static function parse($bt_signature, $bt_payload) {
-
-        $gateway = new \Braintree\Gateway(Configuracion::BRAINTREE_CONFIG);
-
-        return $gateway->webhookNotification()->parse(
+        return $this->gateway->webhookNotification()->parse(
             $bt_signature, $bt_payload
         );
 
