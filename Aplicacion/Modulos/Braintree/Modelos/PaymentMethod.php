@@ -2,9 +2,7 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
-use Jida\BD\DataModel;
-
-class PaymentMethod extends DataModel {
+class PaymentMethod extends Braintree {
 
     public $id_payment_method;
     public $customer_id;
@@ -16,5 +14,15 @@ class PaymentMethod extends DataModel {
 
     protected $tablaBD = "bt_payment_methods";
     protected $pk = "id_payment_method";
+
+    public function __construct() {
+        parent::__construct();
+    }
+
+    public function createNonce($payment_method_token){
+
+        $result = $this->gateway->paymentMethodNonce()->create($payment_method_token);
+        return $result->paymentMethodNonce->nonce;
+    }
 
 }
