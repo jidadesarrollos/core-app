@@ -24,6 +24,7 @@ class Webhooks extends App {
                 $bt_signature, $bt_payload
             );
 
+            //TODO Moises Mejorar la logica del switch
             switch ($webhookNotification->kind){
                 case 'transaction_settled':
                 case 'transaction_settlement_declined':
