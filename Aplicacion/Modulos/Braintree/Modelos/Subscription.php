@@ -68,7 +68,6 @@ class Subscription extends Braintree {
             if (isset($this->bt_subscription_id) and !empty($this->bt_subscription_id)) {
                 $this->gateway->subscription()->cancel($this->bt_subscription_id);
             }
-
             $result = $this->eliminar();
         }
 

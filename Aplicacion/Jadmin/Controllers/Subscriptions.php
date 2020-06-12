@@ -22,16 +22,11 @@ class Subscriptions extends Jadmin {
     public function index($idCustomer = "") {
 
         $data = $this->customer->subscriptions($idCustomer);
-        $parametros = ['titulos' => ['ID Cliente', 'Metodo de pago', 'Plan', 'Precio', 'ID Suscripcion']];
+        $parametros = ['titulos' => ['ID Cliente', 'Metodo de pago', 'Plan', 'Precio', 'ID Suscripcion', 'Estatus']];
 
         $vista = new JVista($data, $parametros);
 
         $vista->accionesFila([
-            [
-                'span'  => 'fas fa-edit',
-                'title' => 'Editar',
-                'href'  => '/jadmin/subscriptions/gestion/' . $idCustomer . '/{clave}'
-            ],
             [
                 'span'        => 'fas fa-trash',
                 'title'       => 'Eliminar',

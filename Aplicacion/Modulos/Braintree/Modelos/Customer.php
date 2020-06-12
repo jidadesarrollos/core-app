@@ -25,6 +25,8 @@ class Customer extends Braintree {
     public function __construct() {
         parent::__construct();
         $this->_subscription = new Subscription();
+        $this->_transaction = new Transaction();
+        $this->_payment_methods = new PaymentMethod();
     }
 
     public function getAll() {
@@ -33,10 +35,24 @@ class Customer extends Braintree {
     }
 
     public function subscriptions($idCustomer) {
-        $this->_subscription->consulta(['id_subscription', 'customer_id', 'payment_method_token', 'plan_id', 'price', 'bt_subscription_id']);
+        $this->_subscription->consulta(['id_subscription', 'customer_id', 'payment_method_token', 'plan_id', 'price', 'bt_subscription_id', 'subscription_status']);
         $this->_subscription->filtro(['customer_id' => $idCustomer]);
 
         return $this->_subscription->obt();
+    }
+
+    public function transactions($idCustomer) {
+        $this->_transaction->consulta(['id_transaction', 'customer_id', 'amount', 'id_payment_method', 'bt_transaction_id', 'transaction_status']);
+        $this->_transaction->filtro(['customer_id' => $idCustomer]);
+
+        return $this->_transaction->obt();
+    }
+
+    public function paymentMethods($idCustomer) {
+        $this->_payment_methods->consulta(['id_payment_method', 'customer_id']);
+        $this->_payment_methods->filtro(['customer_id' => $idCustomer]);
+
+        return $this->_payment_methods->obt();
     }
 
     public function save($params, $id = "") {
@@ -57,7 +73,9 @@ class Customer extends Braintree {
         }
         else {
             $result = $this->gateway->customer()->create($data);
-            if ($result->success) $this->bt_customer_id = $result->customer->id;
+            if ($result->success){
+                $this->bt_customer_id = $result->customer->id;
+            }
         }
 
         return $this->salvar($params);

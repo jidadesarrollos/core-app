@@ -44,6 +44,22 @@ class Transaction extends Braintree {
         }
     }
 
+    public function delete($id) {
+
+        $this->instanciar($id);
+        $result = false;
+
+        if (isset($this->id_transaction)) {
+            if (isset($this->bt_transaction_id) and !empty($this->bt_transaction_id)) {
+                $this->gateway->transaction()->void($this->bt_transaction_id);
+            }
+            $result = $this->eliminar();
+        }
+
+        return $result;
+
+    }
+
     public function changeStatus($params){
         $result = $this->consulta()->filtro(['bt_transaction_id' => $params['id']])->obt();
         $_transaction = $result[0];
