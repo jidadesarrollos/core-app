@@ -25,9 +25,9 @@ class Configuracion extends Config {
     // Braintree
     const BRAINTREE_CONFIG = [
         'environment' => 'sandbox',
-        'merchantId'  => 'jjyy8qvqf2dysdqb',
-        'publicKey'   => '3ftnz9cvfc83sc9p',
-        'privateKey'  => 'a400c02f66d6fb8dc8cb07d503bda1cd'
+        'merchantId'  => 'rmrz8jbp93hbk92j',
+        'publicKey'   => 'ywrtgzwrwwdfw2kf',
+        'privateKey'  => '329901d95e0903c3e53ef70ce793da6b'
     ];
 
     static $modulos = [

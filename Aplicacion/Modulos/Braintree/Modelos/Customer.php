@@ -2,12 +2,12 @@
 
 namespace App\Modulos\Braintree\Modelos;
 
-use App\Config\Configuracion;
-use Jida\BD\DataModel;
+use Jida\Medios\Debug;
 
-class Customer extends DataModel {
+class Customer extends Braintree {
 
     public $id_customer;
+    public $id_usuario;
     public $first_name;
     public $last_name;
     public $company;
@@ -16,40 +16,48 @@ class Customer extends DataModel {
     public $fax;
     public $website;
     public $bt_customer_id;
-    public $creator_user_id;
-    public $modifier_user_id;
-    public $time_created;
-    public $time_updated;
 
     protected $tablaBD = "bt_customers";
     protected $pk = "id_customer";
 
-    public static function getAll() {
+    private $_subscription;
 
-        $model = new Customer();
-        $model->consulta(['id_customer', 'first_name', 'last_name', 'company', 'email', 'phone', 'fax', 'website', 'bt_customer_id']);
-        $result = $model->obt();
-
-        return $result;
-
+    public function __construct() {
+        parent::__construct();
+        $this->_subscription = new Subscription();
+        $this->_transaction = new Transaction();
+        $this->_payment_methods = new PaymentMethod();
     }
 
-    public static function subscriptions($idCustomer) {
-
-        $model = new Subscription();
-        $model->consulta(['id_subscription', 'customer_id', 'payment_method_token', 'plan_id', 'price', 'bt_subscription_id']);
-        $model->filtro(['customer_id' => $idCustomer]);
-        $subscriptions = $model->obt();
-
-        return $subscriptions;
-
+    public function getAll() {
+        $this->consulta(['id_customer', 'first_name', 'last_name', 'company', 'email', 'phone', 'fax', 'website', 'bt_customer_id']);
+        return $this->obt();
     }
 
-    public static function save($params, $id = "") {
+    public function subscriptions($idCustomer) {
+        $this->_subscription->consulta(['id_subscription', 'customer_id', 'payment_method_token', 'plan_id', 'price', 'bt_subscription_id', 'subscription_status']);
+        $this->_subscription->filtro(['customer_id' => $idCustomer]);
 
-        $gateway = new \Braintree_Gateway(Configuracion::BRAINTREE_CONFIG);
-        $customer = new Customer($id);
+        return $this->_subscription->obt();
+    }
 
+    public function transactions($idCustomer) {
+        $this->_transaction->consulta(['id_transaction', 'customer_id', 'amount', 'id_payment_method', 'bt_transaction_id', 'transaction_status']);
+        $this->_transaction->filtro(['customer_id' => $idCustomer]);
+
+        return $this->_transaction->obt();
+    }
+
+    public function paymentMethods($idCustomer) {
+        $this->_payment_methods->consulta(['id_payment_method', 'customer_id']);
+        $this->_payment_methods->filtro(['customer_id' => $idCustomer]);
+
+        return $this->_payment_methods->obt();
+    }
+
+    public function save($params, $id = "") {
+
+        $this->instanciar($id);
         $data = [
             'firstName' => isset($params['first_name']) ? $params['first_name'] : "",
             'lastName'  => isset($params['last_name']) ? $params['last_name'] : "",
@@ -60,36 +68,40 @@ class Customer extends DataModel {
             'website'   => isset($params['website']) ? $params['website'] : "",
         ];
 
-        if (isset($customer->bt_customer_id) and !empty($customer->bt_customer_id)) {
-            $gateway->customer()->update($customer->bt_customer_id, $data);
+        if (isset($this->bt_customer_id) and !empty($this->bt_customer_id)) {
+            $this->gateway->customer()->update($this->bt_customer_id, $data);
         }
         else {
-            $result = $gateway->customer()->create($data);
-            if ($result->success) $customer->bt_customer_id = $result->customer->id;
+            $result = $this->gateway->customer()->create($data);
+            if ($result->success){
+                $this->bt_customer_id = $result->customer->id;
+            }
         }
 
-        $customer = $customer->salvar($params);
-
-        return $customer;
+        return $this->salvar($params);
 
     }
 
-    public static function delete($id) {
+    public function delete($id) {
 
-        $gateway = new \Braintree_Gateway(Configuracion::BRAINTREE_CONFIG);
-        $customer = new Customer($id);
         $result = false;
+        $this->instanciar($id);
 
-        if (isset($customer->id_customer)) {
-            if (isset($customer->bt_customer_id) and !empty($customer->bt_customer_id)) {
-                $gateway->customer()->delete($customer->bt_customer_id);
+        if (isset($this->id_customer)) {
+            if (isset($this->bt_customer_id) and !empty($this->bt_customer_id)) {
+                $this->gateway->customer()->delete($this->bt_customer_id);
             }
 
-            $result = $customer->eliminar();
+            $result = $this->eliminar();
         }
 
         return $result;
 
+    }
+
+    public function get($id, $session){
+        $field = (isset($session)) ? 'id_usuario' : 'id_customer';
+        return $this->consulta()->filtro([$field => $id])->obt();
     }
 
 }

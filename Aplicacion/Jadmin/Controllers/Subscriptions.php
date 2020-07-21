@@ -10,23 +10,23 @@ use JidaRender\JVista;
 
 class Subscriptions extends Jadmin {
 
+    private $model;
+    private $customer;
+
     public function __construct() {
         parent::__construct();
+        $this->customer = new Customer();
+        $this->model = new Subscription();
     }
 
     public function index($idCustomer = "") {
 
-        $data = Customer::subscriptions($idCustomer);
-        $parametros = ['titulos' => ['ID Cliente', 'Metodo de pago', 'Plan', 'Precio', 'ID Suscripcion']];
+        $data = $this->customer->subscriptions($idCustomer);
+        $parametros = ['titulos' => ['ID Cliente', 'Metodo de pago', 'Plan', 'Precio', 'ID Suscripcion', 'Estatus']];
 
         $vista = new JVista($data, $parametros);
 
         $vista->accionesFila([
-            [
-                'span'  => 'fas fa-edit',
-                'title' => 'Editar',
-                'href'  => '/jadmin/subscriptions/gestion/' . $idCustomer . '/{clave}'
-            ],
             [
                 'span'        => 'fas fa-trash',
                 'title'       => 'Eliminar',
@@ -55,7 +55,7 @@ class Subscriptions extends Jadmin {
 
             if ($form->validar()) {
 
-                Subscription::save($this->post(), $id);
+                $this->model->save($this->post(), $id);
                 $accion = (empty($id)) ? 'guardado' : 'modificado';
                 $msj = 'Registro <strong>' . $accion . '</strong> exitosamente';
                 Mensajes::almacenar(Mensajes::suceso($msj));
@@ -76,7 +76,7 @@ class Subscriptions extends Jadmin {
 
     function eliminar($idCustomer, $id = "") {
 
-        $msj = Subscription::delete($id) ?
+        $msj = $this->model->delete($id) ?
             Mensajes::suceso('El registro ha sido eliminado correctamente') :
             Mensajes::error('El registro que desea eliminar no existe');
 
