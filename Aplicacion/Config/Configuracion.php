@@ -13,7 +13,8 @@ class Configuracion extends Config {
     const ENVIAR_EMAIL_ERROR = false;
     const EMAIL_SOPORTE = 'soporte@jidadesarrollos.com';
     const HASH_CLAVE = "md5"; // opciones: password_hash, md5
-    const IDIOMA_DEFAULT = "en";
+    const IDIOMA_DEFAULT = "es";
+    static $idioma = "es";
 
     public $tema = 'default';
 
