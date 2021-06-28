@@ -19,6 +19,7 @@ class Index extends App {
                 'type' => 'module'
             ]
         ]);
+
     }
 
     function testpost() {
