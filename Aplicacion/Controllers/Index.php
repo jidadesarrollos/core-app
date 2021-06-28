@@ -6,12 +6,19 @@
 
 namespace App\Controllers;
 
+use App\Config\Configuracion;
 use Jida\Core\Curl;
+use Jida\Manager\Estructura;
 
 class Index extends App {
 
     function index() {
-
+        $this->layout()->incluirJS([
+            "payment" => [
+                'src'  => Estructura::$urlBase . "/Aplicacion/Layout/default/htdocs/js/payment/code.js",
+                'type' => 'module'
+            ]
+        ]);
     }
 
     function testpost() {
